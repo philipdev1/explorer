@@ -1,4 +1,4 @@
-import { TransactionSignature } from '@solana/web3.js';
+import { TransactionSignature } from '@bbachain/web3.js';
 import { useClusterPath } from '@utils/url';
 import Link from 'next/link';
 import React from 'react';

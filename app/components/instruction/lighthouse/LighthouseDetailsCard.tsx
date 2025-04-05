@@ -1,4 +1,4 @@
-import { PublicKey, SignatureResult, TransactionInstruction } from '@solana/web3.js';
+import { PublicKey, SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import {
     EquatableOperator,
     identifyLighthouseInstruction,

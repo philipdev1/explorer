@@ -32,7 +32,7 @@ export function NonceAccountSection({ account, nonceAccount }: { account: Accoun
                 <tr>
                     <td>Fee</td>
                     <td className="text-lg-end">
-                        {nonceAccount.info.feeCalculator.lamportsPerSignature} lamports per signature
+                        {nonceAccount.info.feeCalculator.lamportsPerSignature} daltons per signature
                     </td>
                 </tr>
             </TableCardBody>

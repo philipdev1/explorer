@@ -1,10 +1,5 @@
 'use client';
 
-import { MetadataJson, programs } from '@metaplex/js';
-import getEditionInfo, { EditionInfo } from '@providers/accounts/utils/getEditionInfo';
-import * as Cache from '@providers/cache';
-import { ActionType, FetchStatus } from '@providers/cache';
-import { useCluster } from '@providers/cluster';
 import {
     AddressLookupTableAccount,
     AddressLookupTableProgram,
@@ -13,9 +8,14 @@ import {
     PublicKey,
     StakeActivationData,
     SystemProgram,
-} from '@solana/web3.js';
+} from '@bbachain/web3.js';
+// import { MetadataJson, programs } from '@metaplex/js';
+// import getEditionInfo from '@providers/accounts/utils/getEditionInfo';
+import * as Cache from '@providers/cache';
+import { ActionType, FetchStatus } from '@providers/cache';
+import { useCluster } from '@providers/cluster';
 import { Cluster } from '@utils/cluster';
-import { pubkeyToString } from '@utils/index';
+// import { pubkeyToString } from '@utils/index';
 import { assertIsTokenProgram, TokenProgram } from '@utils/programs';
 import { ParsedAddressLookupTableAccount } from '@validators/accounts/address-lookup-table';
 import { ConfigAccount } from '@validators/accounts/config';
@@ -33,15 +33,14 @@ import { ParsedInfo } from '@validators/index';
 import React from 'react';
 import { create } from 'superstruct';
 
-import { getProxiedUri } from '@/app/features/metadata/utils';
-
+// import { getProxiedUri } from '@/app/features/metadata/utils';
 import { HistoryProvider } from './history';
 import { RewardsProvider } from './rewards';
 import { TokensProvider } from './tokens';
 import { getStakeActivation } from './utils/stake';
 export { useAccountHistory } from './history';
 
-const Metadata = programs.metadata.Metadata;
+// const Metadata = programs.metadata.Metadata;
 
 export type StakeProgramData = {
     program: 'stake';
@@ -55,11 +54,11 @@ export type UpgradeableLoaderAccountData = {
     programData?: ProgramDataAccountInfo;
 };
 
-export type NFTData = {
-    metadata: programs.metadata.MetadataData;
-    json: MetadataJson | undefined;
-    editionInfo: EditionInfo;
-};
+// export type NFTData = {
+//     metadata: programs.metadata.MetadataData;
+//     json: MetadataJson | undefined;
+//     editionInfo: EditionInfo;
+// };
 
 export function isTokenProgramData(data: { program: string }): data is TokenProgramData {
     try {
@@ -72,7 +71,7 @@ export function isTokenProgramData(data: { program: string }): data is TokenProg
 export type TokenProgramData = {
     program: TokenProgram;
     parsed: TokenAccount;
-    nftData?: NFTData;
+    // nftData?: NFTData;
 };
 
 export type VoteProgramData = {
@@ -117,7 +116,7 @@ export interface AccountData {
 
 export interface Account {
     pubkey: PublicKey;
-    lamports: number;
+    daltons: number;
     executable: boolean;
     owner: PublicKey;
     space?: number;
@@ -245,9 +244,9 @@ async function fetchMultipleAccounts({
                 let account: Account;
                 if (result === null) {
                     account = {
+                        daltons: 0,
                         data: { raw: Buffer.alloc(0) },
                         executable: false,
-                        lamports: 0,
                         owner: SystemProgram.programId,
                         pubkey,
                         space: 0,
@@ -274,12 +273,12 @@ async function fetchMultipleAccounts({
                     }
 
                     account = {
+                        daltons: result.daltons,
                         data: {
                             parsed: parsedData,
                             raw: rawData,
                         },
                         executable: result.executable,
-                        lamports: result.lamports,
                         owner: result.owner,
                         pubkey,
                         space,
@@ -396,30 +395,30 @@ async function handleParsedAccountData(
         case 'spl-token':
         case 'spl-token-2022': {
             const parsed = create(info, TokenAccount);
-            let nftData;
+            // let nftData;
 
             try {
                 // Generate a PDA and check for a Metadata Account
                 if (parsed.type === 'mint') {
-                    const metadata = await Metadata.load(connection, await Metadata.getPDA(accountKey));
-                    if (metadata) {
-                        // We have a valid Metadata account. Try and pull edition data.
-                        const editionInfo = await getEditionInfo(metadata, connection);
-                        const id = pubkeyToString(accountKey);
-                        const metadataJSON = await getMetaDataJSON(id, metadata.data);
-                        nftData = {
-                            editionInfo,
-                            json: metadataJSON,
-                            metadata: metadata.data,
-                        };
-                    }
+                    // const metadata = await Metadata.load(connection as any, await Metadata.getPDA(accountKey));
+                    // if (metadata) {
+                    //     // We have a valid Metadata account. Try and pull edition data.
+                    //     const editionInfo = await getEditionInfo(metadata, connection);
+                    //     const id = pubkeyToString(accountKey);
+                    //     const metadataJSON = await getMetaDataJSON(id, metadata.data);
+                    //     nftData = {
+                    //         editionInfo,
+                    //         json: metadataJSON,
+                    //         metadata: metadata.data,
+                    //     };
+                    // }
                 }
             } catch (error) {
                 // unable to find NFT metadata account
             }
 
             return {
-                nftData,
+                // nftData,
                 parsed,
                 program: accountData.program,
             };
@@ -427,55 +426,55 @@ async function handleParsedAccountData(
     }
 }
 
-const IMAGE_MIME_TYPE_REGEX = /data:image\/(svg\+xml|png|jpeg|gif)/g;
+// const IMAGE_MIME_TYPE_REGEX = /data:image\/(svg\+xml|png|jpeg|gif)/g;
 
-const getMetaDataJSON = async (
-    id: string,
-    metadata: programs.metadata.MetadataData
-): Promise<MetadataJson | undefined> => {
-    return new Promise(resolve => {
-        const uri = metadata.data.uri;
-        if (!uri) return resolve(undefined);
+// const getMetaDataJSON = async (
+//     id: string,
+//     metadata: programs.metadata.MetadataData
+// ): Promise<MetadataJson | undefined> => {
+//     return new Promise(resolve => {
+//         const uri = metadata.data.uri;
+//         if (!uri) return resolve(undefined);
 
-        const processJson = (extended: any) => {
-            if (!extended || (!extended.image && extended?.properties?.files?.length === 0)) {
-                return;
-            }
+//         const processJson = (extended: any) => {
+//             if (!extended || (!extended.image && extended?.properties?.files?.length === 0)) {
+//                 return;
+//             }
 
-            if (extended?.image) {
-                extended.image =
-                    extended.image.startsWith('http') || IMAGE_MIME_TYPE_REGEX.test(extended.image)
-                        ? extended.image
-                        : `${metadata.data.uri}/${extended.image}`;
-            }
+//             if (extended?.image) {
+//                 extended.image =
+//                     extended.image.startsWith('http') || IMAGE_MIME_TYPE_REGEX.test(extended.image)
+//                         ? extended.image
+//                         : `${metadata.data.uri}/${extended.image}`;
+//             }
 
-            return extended;
-        };
+//             return extended;
+//         };
 
-        try {
-            fetch(getProxiedUri(uri))
-                .then(async _ => {
-                    try {
-                        const data = await _.json();
-                        try {
-                            localStorage.setItem(uri, JSON.stringify(data));
-                        } catch {
-                            // ignore
-                        }
-                        resolve(processJson(data));
-                    } catch {
-                        resolve(undefined);
-                    }
-                })
-                .catch(() => {
-                    resolve(undefined);
-                });
-        } catch (ex) {
-            console.error(ex);
-            resolve(undefined);
-        }
-    });
-};
+//         try {
+//             fetch(getProxiedUri(uri))
+//                 .then(async _ => {
+//                     try {
+//                         const data = await _.json();
+//                         try {
+//                             localStorage.setItem(uri, JSON.stringify(data));
+//                         } catch {
+//                             // ignore
+//                         }
+//                         resolve(processJson(data));
+//                     } catch {
+//                         resolve(undefined);
+//                     }
+//                 })
+//                 .catch(() => {
+//                     resolve(undefined);
+//                 });
+//         } catch (ex) {
+//             console.error(ex);
+//             resolve(undefined);
+//         }
+//     });
+// };
 
 export function useAccounts() {
     const context = React.useContext(StateContext);
@@ -543,7 +542,7 @@ export function useAddressLookupTable(
         if (accountInfo === undefined) return;
         const account = accountInfo.data;
         if (account === undefined) return [account, accountInfo.status];
-        if (account.lamports === 0) return ['Lookup Table Not Found', accountInfo.status];
+        if (account.daltons === 0) return ['Lookup Table Not Found', accountInfo.status];
         const { parsed: parsedData, raw: rawData } = account.data;
 
         const key = new PublicKey(address);
@@ -564,7 +563,7 @@ export function useAddressLookupTable(
                 return [
                     new AddressLookupTableAccount({
                         key,
-                        state: AddressLookupTableAccount.deserialize(rawData),
+                        state: AddressLookupTableAccount.deserialize(rawData as any),
                     }),
                     accountInfo.status,
                 ];

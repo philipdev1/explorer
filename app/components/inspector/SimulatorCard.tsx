@@ -1,7 +1,3 @@
-import { ProgramLogsCardBody } from '@components/ProgramLogsCardBody';
-import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@providers/accounts/tokens';
-import { useCluster } from '@providers/cluster';
-import { AccountLayout, MintLayout } from '@solana/spl-token';
 import {
     AccountInfo,
     AddressLookupTableAccount,
@@ -13,8 +9,12 @@ import {
     TokenBalance,
     VersionedMessage,
     VersionedTransaction,
-} from '@solana/web3.js';
-import { PublicKey } from '@solana/web3.js';
+} from '@bbachain/web3.js';
+import { PublicKey } from '@bbachain/web3.js';
+import { ProgramLogsCardBody } from '@components/ProgramLogsCardBody';
+import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@providers/accounts/tokens';
+import { useCluster } from '@providers/cluster';
+import { AccountLayout, MintLayout } from '@solana/spl-token';
 import { InstructionLogs, parseProgramLogs } from '@utils/program-logs';
 import React from 'react';
 
@@ -138,7 +138,7 @@ function useSimulator(message: VersionedMessage) {
                     (addressTableLookup: AccountInfo<Buffer>, index) => {
                         return new AddressLookupTableAccount({
                             key: addressTableLookupKeys[index],
-                            state: AddressLookupTableAccount.deserialize(addressTableLookup.data),
+                            state: AddressLookupTableAccount.deserialize(addressTableLookup.data as any),
                         });
                     }
                 );

@@ -1,7 +1,7 @@
+import { ParsedMessageAccount, PublicKey, TokenAmount, TokenBalance } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { BalanceDelta } from '@components/common/BalanceDelta';
 import { useTransactionDetails } from '@providers/transactions';
-import { ParsedMessageAccount, PublicKey, TokenAmount, TokenBalance } from '@solana/web3.js';
 import { SignatureProps } from '@utils/index';
 import { BigNumber } from 'bignumber.js';
 import React, { useState } from 'react';

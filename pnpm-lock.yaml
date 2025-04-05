@@ -5,6 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
+  rpc-websockets: 7.11.0
   '@solana/addresses': 2.1.0
   avsc: git://github.com/Irys-xyz/avsc#a730cc8018b79e114b6a3381bbb57760a24c6cef
   cross-fetch: ^3.1.5
@@ -17,6 +18,9 @@ importers:
 
   .:
     dependencies:
+      '@bbachain/web3.js':
+        specifier: ^1.1.3
+        version: 1.1.3(bufferutil@4.0.7)(utf-8-validate@5.0.10)
       '@blockworks-foundation/mango-client':
         specifier: ^3.6.7
         version: 3.6.7(bufferutil@4.0.7)(utf-8-validate@5.0.10)
@@ -576,6 +580,24 @@ packages:
   '@babel/types@7.26.10':
     resolution: {integrity: sha512-emqcG3vHrpxUKTrxcblR36dcrcoRDvKmnL/dCL6ZsHaShW80qxCAcNhzQZrpeM765VzEos+xOi4s+r4IXzTwdQ==}
     engines: {node: '>=6.9.0'}
+
+  '@bbachain/buffer-layout-utils@0.0.1':
+    resolution: {integrity: sha512-wefKq4vitQfhyWD+zuwB4Tqr+xNCaeqzJ2DR6I4pkG96igM/ubDuz1FFqjdP8zhqze/SqRByExQhs82A/wdSnA==}
+    engines: {node: '>= 10'}
+
+  '@bbachain/buffer-layout@0.0.1':
+    resolution: {integrity: sha512-kUITbMiWVDefC85NN83Yrc4az64lmOxx81F0D12V/nSCseoN36SwMuf5osfXjgUQggXbYIOxjUPtsNoyAwOjZw==}
+    engines: {node: '>=5.10'}
+
+  '@bbachain/spl-token@0.0.1':
+    resolution: {integrity: sha512-WErz1vnZ07r/l9sbvXvy8y1bhzxzbERIwZIa5BAmFPEPP+y10CnaTPEfM7dWmp7tstD++7LZjT8ZVifBP9k5mA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@bbachain/web3.js': ^1.0.3
+
+  '@bbachain/web3.js@1.1.3':
+    resolution: {integrity: sha512-8PKwp4gkfV8022ZJ+TQSvzbRUUBLLsBVAEYXgeJFjnMLfIqegL/uYKpfoLupcC0IyPnOU0szpCM0I9ga6X7OnQ==}
+    engines: {node: '>=12.20.0'}
 
   '@bcoe/v8-coverage@1.0.2':
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
@@ -2090,9 +2112,6 @@ packages:
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
 
-  '@swc/helpers@0.5.12':
-    resolution: {integrity: sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==}
-
   '@swc/helpers@0.5.5':
     resolution: {integrity: sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A==}
 
@@ -2251,14 +2270,8 @@ packages:
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
 
-  '@types/uuid@8.3.4':
-    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
-
   '@types/ws@7.4.7':
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
-
-  '@types/ws@8.5.12':
-    resolution: {integrity: sha512-3tPRkv1EtkDpzlgyKyI8pGsGZAGPEaXeu0DOj5DI25Ja91bdAYddYHbADRYVrZMRbfW+1l5YwXVDKohDJNQxkQ==}
 
   '@types/yargs-parser@21.0.0':
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
@@ -2719,6 +2732,9 @@ packages:
 
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+
+  buffer@6.0.1:
+    resolution: {integrity: sha512-rVAXBwEcEoYtxnHSO5iWyhzV/O1WMtkUYWlfdLS7FjU4PnSJJHEfHXi/uHPI5EwltmOA794gN3bm3/pzuctWjQ==}
 
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
@@ -4058,6 +4074,11 @@ packages:
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
 
+  jayson@3.7.0:
+    resolution: {integrity: sha512-tfy39KJMrrXJ+mFcMpxwBvFDetS8LAID93+rycFglIQM4kl3uNR3W4lBLE/FFhsoUCEox5Dt2adVpDm/XtebbQ==}
+    engines: {node: '>=8'}
+    hasBin: true
+
   jayson@4.1.2:
     resolution: {integrity: sha512-5nzMWDHy6f+koZOuYsArh2AXs73NfWYVlFyJJuCedr93GpY+Ku8qq10ropSXVfHK+H0T6paA88ww+/dV+1fBNA==}
     engines: {node: '>=8'}
@@ -5000,8 +5021,9 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  rpc-websockets@9.0.2:
-    resolution: {integrity: sha512-YzggvfItxMY3Lwuax5rC18inhbjJv9Py7JXRHxTIi94JOLrqBsSsUUc5bbl5W6c11tXhdfpDPK0KzBhoGe8jjw==}
+  rpc-websockets@7.11.0:
+    resolution: {integrity: sha512-IkLYjayPv6Io8C/TdCL5gwgzd1hFz2vmBZrjMw/SPEXo51ETOhnzgS4Qy5GWi2JQN7HKHa66J3+2mv0fgNh/7w==}
+    deprecated: deprecate 7.11.0
 
   rrweb-cssom@0.8.0:
     resolution: {integrity: sha512-guoltQEx+9aMf2gDZ0s62EcV8lsXR+0w8915TC3ITdn2YueuNjdAYh/levpU9nFaoChh9RUS5ZdQMrKfVEN9tw==}
@@ -5256,6 +5278,9 @@ packages:
 
   stylis@4.1.4:
     resolution: {integrity: sha512-USf5pszRYwuE6hg9by0OkKChkQYEXfkeTtm0xKw+jqQhwyjCVLdYyMBK7R+n7dhzsblAWJnGxju4vxq5eH20GQ==}
+
+  superstruct@0.14.2:
+    resolution: {integrity: sha512-nPewA6m9mR3d6k7WkZ8N8zpTWfenFH3q9pA2PkuiZxINr9DKB2+40wEQf0ixn8VaGuJ78AB6iWOtStI+/4FKZQ==}
 
   superstruct@0.15.3:
     resolution: {integrity: sha512-wilec1Rg3FtKuRjRyCt70g5W29YUEuaLnybdVQUI+VQ7m0bw8k7TzrRv5iYmo6IpjLVrwxP5t3RgjAVqhYh4Fg==}
@@ -6455,6 +6480,55 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@bbachain/buffer-layout-utils@0.0.1(bufferutil@4.0.7)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@bbachain/buffer-layout': 0.0.1
+      '@bbachain/web3.js': 1.1.3(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      bigint-buffer: 1.1.5
+      bignumber.js: 9.0.2
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
+
+  '@bbachain/buffer-layout@0.0.1':
+    dependencies:
+      buffer: 6.0.3
+
+  '@bbachain/spl-token@0.0.1(@bbachain/web3.js@1.1.3(bufferutil@4.0.7)(utf-8-validate@5.0.10))(bufferutil@4.0.7)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@bbachain/buffer-layout': 0.0.1
+      '@bbachain/buffer-layout-utils': 0.0.1(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      '@bbachain/web3.js': 1.1.3(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      buffer: 6.0.3
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
+
+  '@bbachain/web3.js@1.1.3(bufferutil@4.0.7)(utf-8-validate@5.0.10)':
+    dependencies:
+      '@babel/runtime': 7.25.6
+      '@bbachain/buffer-layout': 0.0.1
+      '@bbachain/spl-token': 0.0.1(@bbachain/web3.js@1.1.3(bufferutil@4.0.7)(utf-8-validate@5.0.10))(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      '@noble/curves': 1.5.0
+      '@noble/hashes': 1.5.0
+      agentkeepalive: 4.5.0
+      bigint-buffer: 1.1.5
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      bs58: 4.0.1
+      buffer: 6.0.1
+      fast-stable-stringify: 1.0.0
+      jayson: 3.7.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      node-fetch: 2.6.9
+      rpc-websockets: 7.11.0
+      superstruct: 0.14.2
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - utf-8-validate
 
   '@bcoe/v8-coverage@1.0.2': {}
 
@@ -8656,7 +8730,7 @@ snapshots:
       fast-stable-stringify: 1.0.0
       jayson: 4.1.2(bufferutil@4.0.7)(utf-8-validate@5.0.10)
       node-fetch: 2.6.9
-      rpc-websockets: 9.0.2
+      rpc-websockets: 7.11.0
       superstruct: 2.0.2
     transitivePeerDependencies:
       - bufferutil
@@ -8725,10 +8799,6 @@ snapshots:
   '@supercharge/promise-pool@2.4.0': {}
 
   '@swc/counter@0.1.3': {}
-
-  '@swc/helpers@0.5.12':
-    dependencies:
-      tslib: 2.7.0
 
   '@swc/helpers@0.5.5':
     dependencies:
@@ -8918,13 +8988,7 @@ snapshots:
 
   '@types/unist@2.0.11': {}
 
-  '@types/uuid@8.3.4': {}
-
   '@types/ws@7.4.7':
-    dependencies:
-      '@types/node': 18.16.3
-
-  '@types/ws@8.5.12':
     dependencies:
       '@types/node': 18.16.3
 
@@ -9515,6 +9579,11 @@ snapshots:
   buffer-layout@1.2.2: {}
 
   buffer@5.7.1:
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+
+  buffer@6.0.1:
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -11151,6 +11220,25 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
+  jayson@3.7.0(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+    dependencies:
+      '@types/connect': 3.4.35
+      '@types/node': 12.20.55
+      '@types/ws': 7.4.7
+      JSONStream: 1.3.5
+      commander: 2.20.3
+      delay: 5.0.0
+      es6-promisify: 5.0.0
+      eyes: 0.1.8
+      isomorphic-ws: 4.0.1(ws@7.5.10(bufferutil@4.0.7)(utf-8-validate@5.0.10))
+      json-stringify-safe: 5.0.1
+      lodash: 4.17.21
+      uuid: 9.0.0
+      ws: 7.5.10(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   jayson@4.1.2(bufferutil@4.0.7)(utf-8-validate@5.0.10):
     dependencies:
       '@types/connect': 3.4.35
@@ -12433,13 +12521,9 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.35.0
       fsevents: 2.3.3
 
-  rpc-websockets@9.0.2:
+  rpc-websockets@7.11.0:
     dependencies:
-      '@swc/helpers': 0.5.12
-      '@types/uuid': 8.3.4
-      '@types/ws': 8.5.12
-      buffer: 6.0.3
-      eventemitter3: 5.0.1
+      eventemitter3: 4.0.7
       uuid: 9.0.0
       ws: 8.18.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
     optionalDependencies:
@@ -12711,6 +12795,8 @@ snapshots:
       '@babel/core': 7.26.10
 
   stylis@4.1.4: {}
+
+  superstruct@0.14.2: {}
 
   superstruct@0.15.3: {}
 

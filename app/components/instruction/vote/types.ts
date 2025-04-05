@@ -38,8 +38,8 @@ export const VoteInfo = type({
 
 export type WithdrawInfo = Infer<typeof WithdrawInfo>;
 export const WithdrawInfo = type({
+    daltons: number(),
     destination: PublicKeyFromString,
-    lamports: number(),
     voteAccount: PublicKeyFromString,
     withdrawAuthority: PublicKeyFromString,
 });

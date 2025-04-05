@@ -1,6 +1,6 @@
 // TODO(ngundotra): replace with web3.js when patched
 // Temporary fix, copied from: https://github.com/solana-developers/solana-rpc-get-stake-activation/blob/main/web3js-1.0/src/rpc.ts
-import { AccountInfo, Connection, ParsedAccountData, PublicKey, RpcResponseAndContext } from '@solana/web3.js';
+import { AccountInfo, Connection, ParsedAccountData, PublicKey, RpcResponseAndContext } from '@bbachain/web3.js';
 
 interface StakeActivation {
     status: string;
@@ -236,7 +236,7 @@ export async function getStakeActivation(connection: Connection, stakeAddress: P
     } else {
         status = 'inactive';
     }
-    const inactive = BigInt(stakeAccountParsed.value!.lamports) - effective - stakeAccount.meta.rentExemptReserve;
+    const inactive = BigInt(stakeAccountParsed.value!.daltons) - effective - stakeAccount.meta.rentExemptReserve;
 
     return {
         active: effective,

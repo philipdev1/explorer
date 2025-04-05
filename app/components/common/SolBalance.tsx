@@ -2,15 +2,15 @@ import { lamportsToSolString } from '@utils/index';
 import React from 'react';
 
 export function SolBalance({
-    lamports,
+    daltons,
     maximumFractionDigits = 9,
 }: {
-    lamports: number | bigint;
+    daltons: number | bigint;
     maximumFractionDigits?: number;
 }) {
     return (
         <span>
-            ◎<span className="font-monospace">{lamportsToSolString(lamports, maximumFractionDigits)}</span>
+            ◎<span className="font-monospace">{lamportsToSolString(daltons, maximumFractionDigits)}</span>
         </span>
     );
 }

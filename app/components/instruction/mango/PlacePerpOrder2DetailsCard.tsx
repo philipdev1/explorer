@@ -1,6 +1,6 @@
+import { SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { useCluster } from '@providers/cluster';
-import { SignatureResult, TransactionInstruction } from '@solana/web3.js';
 import BN from 'bn.js';
 import { useEffect, useState } from 'react';
 

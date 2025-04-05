@@ -1,6 +1,6 @@
+import { VersionedMessage } from '@bbachain/web3.js';
 import { AddressFromLookupTableWithContext, AddressWithContext } from '@components/inspector/AddressWithContext';
 import { fillAddressTableLookupsAccounts, findLookupAddress } from '@components/inspector/utils';
-import { VersionedMessage } from '@solana/web3.js';
 import React from 'react';
 
 export function AddressTableLookupAddress({

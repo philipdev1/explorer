@@ -1,6 +1,6 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { parseNFTokenNFTAccount } from '@components/account/nftoken/isNFTokenAccount';
 import { NFTOKEN_ADDRESS } from '@components/account/nftoken/nftoken';
-import { PublicKey } from '@solana/web3.js';
 
 describe('parseNFTokenAccounts', () => {
     it('parses an NFT', () => {
@@ -17,9 +17,9 @@ describe('parseNFTokenAccounts', () => {
             0, 0, 0, 0, 0, 0, 0, 0, 0,
         ]);
         const nftAccount = parseNFTokenNFTAccount({
+            daltons: 1,
             data: { raw: buffer as Buffer },
             executable: false,
-            lamports: 1,
             owner: new PublicKey(NFTOKEN_ADDRESS),
             pubkey: new PublicKey('FagABcRBhZH27JDtu6A1Jo9woXyoznP28QujLkxkN9Hj'),
             space: buffer.length,

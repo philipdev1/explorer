@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@bbachain/web3.js';
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 

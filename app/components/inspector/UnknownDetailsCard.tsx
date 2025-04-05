@@ -1,6 +1,6 @@
+import { MessageCompiledInstruction, VersionedMessage } from '@bbachain/web3.js';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { useScrollAnchor } from '@providers/scroll-anchor';
-import { MessageCompiledInstruction, VersionedMessage } from '@solana/web3.js';
 import React from 'react';
 
 import getInstructionCardScrollAnchorId from '@/app/utils/get-instruction-card-scroll-anchor-id';

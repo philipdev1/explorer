@@ -1,5 +1,5 @@
+import { Connection } from '@bbachain/web3.js';
 import { NameRecordHeader, TldParser } from '@onsol/tldparser';
-import { Connection } from '@solana/web3.js';
 import pLimit from 'p-limit';
 import { useEffect, useState } from 'react';
 

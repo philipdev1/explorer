@@ -1,4 +1,3 @@
-import * as spl from '@solana/spl-token';
 import {
     AccountMeta,
     ParsedInstruction,
@@ -8,7 +7,8 @@ import {
     PublicKey,
     TransactionInstruction,
     VersionedMessage,
-} from '@solana/web3.js';
+} from '@bbachain/web3.js';
+import * as spl from '@solana/spl-token';
 import { AssociatedTokenInstruction, CREATE_ASSOCIATED_TOKEN_DISCRIMINATOR, identifyAssociatedTokenInstruction, parseCreateAssociatedTokenIdempotentInstruction, parseCreateAssociatedTokenInstruction, parseRecoverNestedAssociatedTokenInstruction } from '@solana-program/token';
 import { AccountRole, address, IAccountMeta, IInstruction, IInstructionWithAccounts, IInstructionWithData } from 'web3js-experimental';
 
@@ -25,7 +25,7 @@ function intoProgramName(programId: PublicKey): string | undefined {
 
 function isDataEqual(data1: Buffer, data2: Buffer): boolean {
     // Browser will fail if data2 is created with Uint8Array.from
-    return data1.equals(data2);
+    return data1.equals(data2 as any);
 }
 
 function intoParsedData(instruction: TransactionInstruction, parsed?: any): any{
@@ -43,7 +43,7 @@ function intoParsedData(instruction: TransactionInstruction, parsed?: any): any{
             instruction.data = instructionData; // overwrite original data with the modified one
         }
 
-        const instructionType = identifyAssociatedTokenInstruction(instructionData);
+        const instructionType = identifyAssociatedTokenInstruction(instructionData as any);
 
         switch (instructionType) {
             case AssociatedTokenInstruction.CreateAssociatedToken: {
@@ -170,7 +170,7 @@ export function upcastTransactionInstruction(ix: TransactionInstruction) {
 type TAccount = NonNullable<IAccountMeta>
 type TInstruction = IInstruction<string> & IInstructionWithAccounts<readonly TAccount[]> & IInstructionWithData<Uint8Array>;
 export function intoInstructionData(instruction: TransactionInstruction): TInstruction {
-    return upcastTransactionInstruction(instruction);
+    return upcastTransactionInstruction(instruction) as any;
 }
 
 export const privateIntoParsedData = intoParsedData;

@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@bbachain/web3.js';
 import Link from 'next/link';
 
 import { Address } from '@/app/components/common/Address';

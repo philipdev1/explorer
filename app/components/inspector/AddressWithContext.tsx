@@ -1,7 +1,7 @@
+import { PublicKey, SystemProgram } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Account, useAccountInfo, useAddressLookupTable, useFetchAccountInfo } from '@providers/accounts';
 import { useCluster } from '@providers/cluster';
-import { PublicKey, SystemProgram } from '@solana/web3.js';
 import { ClusterStatus } from '@utils/cluster';
 import { lamportsToSolString } from '@utils/index';
 import { addressLabel } from '@utils/tx';
@@ -11,9 +11,9 @@ type AccountValidator = (account: Account) => string | undefined;
 
 export const createFeePayerValidator = (feeLamports: number): AccountValidator => {
     return (account: Account): string | undefined => {
-        if (account.lamports === 0) return "Account doesn't exist";
+        if (account.daltons === 0) return "Account doesn't exist";
         if (!account.owner.equals(SystemProgram.programId)) return 'Only system-owned accounts can pay fees';
-        if (account.lamports < feeLamports) {
+        if (account.daltons < feeLamports) {
             return 'Insufficient funds for fees';
         }
         return;
@@ -21,7 +21,7 @@ export const createFeePayerValidator = (feeLamports: number): AccountValidator =
 };
 
 export const programValidator = (account: Account): string | undefined => {
-    if (account.lamports === 0) return "Account doesn't exist";
+    if (account.daltons === 0) return "Account doesn't exist";
     if (!account.executable) return 'Only executable accounts can be invoked';
     return;
 };
@@ -101,7 +101,7 @@ function AccountInfo({ pubkey, validator }: { pubkey: PublicKey; validator?: Acc
     const errorMessage = validator && validator(account);
     if (errorMessage) return <span className="text-warning">{errorMessage}</span>;
 
-    if (account.lamports === 0) {
+    if (account.daltons === 0) {
         return <span className="text-muted">Account doesn&apos;t exist</span>;
     }
 
@@ -111,7 +111,7 @@ function AccountInfo({ pubkey, validator }: { pubkey: PublicKey; validator?: Acc
     return (
         <span className="text-muted">
             {`Owned by ${ownerLabel || ownerAddress}.`}
-            {` Balance is ${lamportsToSolString(account.lamports)} SOL.`}
+            {` Balance is ${lamportsToSolString(account.daltons)} SOL.`}
             {account.space !== undefined && ` Size is ${new Intl.NumberFormat('en-US').format(account.space)} byte(s).`}
         </span>
     );

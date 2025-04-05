@@ -34,7 +34,7 @@ export const AuthorizeInfo = type({
 
 export type SplitInfo = Infer<typeof SplitInfo>;
 export const SplitInfo = type({
-    lamports: number(),
+    daltons: number(),
     newSplitAccount: PublicKeyFromString,
     stakeAccount: PublicKeyFromString,
     stakeAuthority: PublicKeyFromString,
@@ -42,8 +42,8 @@ export const SplitInfo = type({
 
 export type WithdrawInfo = Infer<typeof WithdrawInfo>;
 export const WithdrawInfo = type({
+    daltons: number(),
     destination: PublicKeyFromString,
-    lamports: number(),
     stakeAccount: PublicKeyFromString,
     withdrawAuthority: PublicKeyFromString,
 });

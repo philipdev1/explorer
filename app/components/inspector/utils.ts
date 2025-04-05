@@ -5,7 +5,7 @@ import {
     PublicKey,
     TransactionInstruction,
     VersionedMessage,
-} from '@solana/web3.js';
+} from '@bbachain/web3.js';
 
 type LookupsForAccountKeyIndex = { lookupTableIndex: number, lookupTableKey: PublicKey }
 

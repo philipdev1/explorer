@@ -1,4 +1,4 @@
-import { ParsedTransaction, PublicKey } from '@solana/web3.js';
+import { ParsedTransaction, PublicKey } from '@bbachain/web3.js';
 import { render, screen } from '@testing-library/react';
 import bs58 from 'bs58';
 import { vi } from 'vitest';

@@ -1,7 +1,7 @@
+import { ParsedInstruction, SignatureResult, SystemProgram } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Copyable } from '@components/common/Copyable';
 import { SolBalance } from '@components/common/SolBalance';
-import { ParsedInstruction, SignatureResult, SystemProgram } from '@solana/web3.js';
 import React from 'react';
 
 import { InstructionCard } from '../InstructionCard';
@@ -57,7 +57,7 @@ export function TransferWithSeedDetailsCard(props: {
             <tr>
                 <td>Transfer Amount (SOL)</td>
                 <td className="text-lg-end">
-                    <SolBalance lamports={info.lamports} />
+                    <SolBalance daltons={info.daltons} />
                 </td>
             </tr>
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { Connection, MessageV0, PACKET_DATA_SIZE, PublicKey, VersionedMessage } from '@bbachain/web3.js';
 import { ErrorCard } from '@components/common/ErrorCard';
 import { LoadingCard } from '@components/common/LoadingCard';
 import { SolBalance } from '@components/common/SolBalance';
@@ -8,7 +9,6 @@ import { useFetchAccountInfo } from '@providers/accounts';
 import { FetchStatus } from '@providers/cache';
 import { useFetchRawTransaction, useRawTransactionDetails } from '@providers/transactions/raw';
 import usePrevious from '@react-hook/previous';
-import { Connection, MessageV0, PACKET_DATA_SIZE, PublicKey, VersionedMessage } from '@solana/web3.js';
 import { generated, PROGRAM_ADDRESS as SQUADS_V4_PROGRAM_ADDRESS } from '@sqds/multisig';
 const { VaultTransaction } = generated;
 
@@ -179,7 +179,7 @@ function SquadsProposalInspectorCard({ account, onClear }: { account: string; on
                 throw new Error(`Account ${account} is not a valid Squads transaction account`);
             }
 
-            return await VaultTransaction.fromAccountAddress(connection, new PublicKey(account), 'confirmed');
+            return await VaultTransaction.fromAccountAddress(connection as any, new PublicKey(account), 'confirmed');
         } catch (err) {
             throw err instanceof Error ? err : new Error('Failed to fetch account data');
         }
@@ -221,7 +221,7 @@ function SquadsProposalInspectorCard({ account, onClear }: { account: string; on
                 accountKeyIndexes: Array.from(instruction.accountIndexes),
                 data: Buffer.from(instruction.data),
                 programIdIndex: instruction.programIdIndex,
-            })),
+            })) as any,
             header: {
                 numReadonlySignedAccounts: message.numSigners - message.numWritableSigners,
                 numReadonlyUnsignedAccounts:
@@ -243,7 +243,7 @@ function SquadsProposalInspectorCard({ account, onClear }: { account: string; on
         <LoadedView
             transaction={{
                 message: convertedMessage,
-                rawMessage: serializedMessage,
+                rawMessage: serializedMessage as any,
                 signatures: undefined,
             }}
             onClear={onClear}
@@ -391,7 +391,7 @@ function PermalinkView({
     const { message, signatures } = transaction;
     const tx = { message, rawMessage: message.serialize(), signatures };
 
-    return <LoadedView transaction={tx} onClear={reset} showTokenBalanceChanges={showTokenBalanceChanges} />;
+    return <LoadedView transaction={tx as any} onClear={reset} showTokenBalanceChanges={showTokenBalanceChanges} />;
 }
 
 function LoadedView({
@@ -462,9 +462,9 @@ function OverviewCard({ message, raw, onClear }: { message: VersionedMessage; ra
                         <td>Fees</td>
                         <td className="text-lg-end">
                             <div className="d-flex align-items-end flex-column">
-                                <SolBalance lamports={fee} />
+                                <SolBalance daltons={fee} />
                                 <span className="text-muted">
-                                    {`Each signature costs ${DEFAULT_FEES.lamportsPerSignature} lamports`}
+                                    {`Each signature costs ${DEFAULT_FEES.lamportsPerSignature} daltons`}
                                 </span>
                             </div>
                         </td>

@@ -1,9 +1,9 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { InfoTooltip } from '@components/common/InfoTooltip';
 import { ArtContent } from '@components/common/NFTArt';
 import { programs } from '@metaplex/js';
 import { NFTData, useFetchAccountInfo, useMintAccountInfo } from '@providers/accounts';
 import { EditionInfo } from '@providers/accounts/utils/getEditionInfo';
-import { PublicKey } from '@solana/web3.js';
 import { useClusterPath } from '@utils/url';
 import Link from 'next/link';
 import React, { createRef } from 'react';

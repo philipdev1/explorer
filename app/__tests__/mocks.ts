@@ -1,4 +1,4 @@
-import { Message, MessageArgs, MessageCompiledInstruction, MessageV0, MessageV0Args, PublicKey, VersionedMessage } from "@solana/web3.js";
+import { Message, MessageArgs, MessageCompiledInstruction, MessageV0, MessageV0Args, PublicKey, VersionedMessage } from "@bbachain/web3.js";
 import { vi } from 'vitest';
 
 // stub a test to not allow passing without tests

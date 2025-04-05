@@ -1,5 +1,5 @@
+import { PublicKey } from '@bbachain/web3.js';
 import * as spl from '@solana/spl-token';
-import { PublicKey } from '@solana/web3.js';
 
 import * as stubs from '@/app/__tests__/mock-stubs';
 import * as mock from '@/app/__tests__/mocks';

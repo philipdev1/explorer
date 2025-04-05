@@ -1,6 +1,6 @@
+import { ParsedInstruction, SignatureResult, StakeProgram } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { SolBalance } from '@components/common/SolBalance';
-import { ParsedInstruction, SignatureResult, StakeProgram } from '@solana/web3.js';
 import React from 'react';
 
 import { InstructionCard } from '../InstructionCard';
@@ -56,7 +56,7 @@ export function WithdrawDetailsCard(props: {
             <tr>
                 <td>Withdraw Amount (SOL)</td>
                 <td className="text-lg-end">
-                    <SolBalance lamports={info.lamports} />
+                    <SolBalance daltons={info.daltons} />
                 </td>
             </tr>
         </InstructionCard>

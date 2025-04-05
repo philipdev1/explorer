@@ -1,12 +1,12 @@
-import { InspectorInstructionCard } from '@components/common/InspectorInstructionCard';
-import { useCluster } from '@providers/cluster';
 import {
     MessageCompiledInstruction,
     ParsedInstruction,
     SignatureResult,
     TransactionInstruction,
     VersionedMessage,
-} from '@solana/web3.js';
+} from '@bbachain/web3.js';
+import { InspectorInstructionCard } from '@components/common/InspectorInstructionCard';
+import { useCluster } from '@providers/cluster';
 import { getProgramName } from '@utils/tx';
 import React from 'react';
 

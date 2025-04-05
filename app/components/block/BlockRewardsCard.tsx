@@ -1,6 +1,6 @@
+import { PublicKey, VersionedBlockResponse } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { SolBalance } from '@components/common/SolBalance';
-import { PublicKey, VersionedBlockResponse } from '@solana/web3.js';
 import React from 'react';
 
 const PAGE_SIZE = 10;
@@ -38,7 +38,7 @@ export function BlockRewardsCard({ block }: { block: VersionedBlockResponse }) {
                             let percentChange;
                             if (reward.postBalance !== null && reward.postBalance !== 0) {
                                 percentChange = (
-                                    (Math.abs(reward.lamports) / (reward.postBalance - reward.lamports)) *
+                                    (Math.abs(reward.daltons) / (reward.postBalance - reward.daltons)) *
                                     100
                                 ).toFixed(9);
                             }
@@ -49,9 +49,9 @@ export function BlockRewardsCard({ block }: { block: VersionedBlockResponse }) {
                                     </td>
                                     <td>{reward.rewardType}</td>
                                     <td>
-                                        <SolBalance lamports={reward.lamports} />
+                                        <SolBalance daltons={reward.daltons} />
                                     </td>
-                                    <td>{reward.postBalance ? <SolBalance lamports={reward.postBalance} /> : '-'}</td>
+                                    <td>{reward.postBalance ? <SolBalance daltons={reward.postBalance} /> : '-'}</td>
                                     <td>{percentChange ? percentChange + '%' : '-'}</td>
                                 </tr>
                             );

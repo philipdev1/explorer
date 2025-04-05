@@ -1,5 +1,5 @@
+import { Connection } from '@bbachain/web3.js';
 import { programs } from '@metaplex/js';
-import { Connection } from '@solana/web3.js';
 
 const {
     metadata: { Metadata, MasterEdition, MetadataKey },
@@ -18,7 +18,7 @@ export default async function getEditionInfo(
     connection: Connection
 ): Promise<EditionInfo> {
     try {
-        const edition = (await Metadata.getEdition(connection, metadata.data.mint)).data;
+        const edition = (await Metadata.getEdition(connection as any, metadata.data.mint)).data;
 
         if (edition) {
             if (edition.key === MetadataKey.MasterEditionV1 || edition.key === MetadataKey.MasterEditionV2) {
@@ -29,7 +29,7 @@ export default async function getEditionInfo(
             }
 
             // This is an Edition NFT. Pull the Parent (MasterEdition)
-            const masterEdition = (await MasterEdition.load(connection, (edition as EditionData).parent)).data;
+            const masterEdition = (await MasterEdition.load(connection as any, (edition as EditionData).parent)).data;
             if (masterEdition) {
                 return {
                     edition: edition as EditionData,

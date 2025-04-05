@@ -1,5 +1,5 @@
+import { AddressLookupTableAccount, PublicKey } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
-import { AddressLookupTableAccount, PublicKey } from '@solana/web3.js';
 import { AddressLookupTableAccountInfo } from '@validators/accounts/address-lookup-table';
 import React from 'react';
 

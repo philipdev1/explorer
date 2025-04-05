@@ -1,3 +1,4 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { UnknownAccountCard } from '@components/account/UnknownAccountCard';
 import { Address } from '@components/common/Address';
 import { DownloadableIcon } from '@components/common/Downloadable';
@@ -8,7 +9,6 @@ import { SolBalance } from '@components/common/SolBalance';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { Account, useFetchAccountInfo } from '@providers/accounts';
 import { useCluster } from '@providers/cluster';
-import { PublicKey } from '@solana/web3.js';
 import { addressLabel } from '@utils/tx';
 import {
     ProgramAccountInfo,
@@ -100,7 +100,7 @@ export function UpgradeableProgramSection({
                 <tr>
                     <td>Balance (SOL)</td>
                     <td className="text-lg-end text-uppercase">
-                        <SolBalance lamports={account.lamports} />
+                        <SolBalance daltons={account.daltons} />
                     </td>
                 </tr>
                 <tr>
@@ -226,7 +226,7 @@ export function UpgradeableProgramDataSection({
                 <tr>
                     <td>Balance (SOL)</td>
                     <td className="text-lg-end text-uppercase">
-                        <SolBalance lamports={account.lamports} />
+                        <SolBalance daltons={account.daltons} />
                     </td>
                 </tr>
                 {account.space !== undefined && (
@@ -290,7 +290,7 @@ export function UpgradeableProgramBufferSection({
                 <tr>
                     <td>Balance (SOL)</td>
                     <td className="text-lg-end text-uppercase">
-                        <SolBalance lamports={account.lamports} />
+                        <SolBalance daltons={account.daltons} />
                     </td>
                 </tr>
                 {account.space !== undefined && (

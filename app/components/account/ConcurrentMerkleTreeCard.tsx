@@ -1,5 +1,5 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { ConcurrentMerkleTreeAccount } from '@solana/spl-account-compression';
-import { PublicKey } from '@solana/web3.js';
 
 import { Address } from '../common/Address';
 import { Slot } from '../common/Slot';

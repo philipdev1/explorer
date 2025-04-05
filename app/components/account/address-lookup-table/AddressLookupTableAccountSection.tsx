@@ -1,9 +1,9 @@
+import { AddressLookupTableAccount } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Slot } from '@components/common/Slot';
 import { SolBalance } from '@components/common/SolBalance';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { Account, useFetchAccountInfo } from '@providers/accounts';
-import { AddressLookupTableAccount } from '@solana/web3.js';
 import { AddressLookupTableAccountInfo } from '@validators/accounts/address-lookup-table';
 import React from 'react';
 import { RefreshCw } from 'react-feather';
@@ -52,7 +52,7 @@ export function AddressLookupTableAccountSection(
                 <tr>
                     <td>Balance (SOL)</td>
                     <td className="text-lg-end text-uppercase">
-                        <SolBalance lamports={account.lamports} />
+                        <SolBalance daltons={account.daltons} />
                     </td>
                 </tr>
                 <tr>

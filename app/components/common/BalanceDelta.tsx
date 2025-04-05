@@ -6,7 +6,7 @@ export function BalanceDelta({ delta, isSol = false }: { delta: BigNumber; isSol
     let sols;
 
     if (isSol) {
-        sols = <SolBalance lamports={Math.abs(delta.toNumber())} />;
+        sols = <SolBalance daltons={Math.abs(delta.toNumber())} />;
     }
 
     if (delta.gt(0)) {

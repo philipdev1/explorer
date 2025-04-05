@@ -1,4 +1,4 @@
-import { PublicKey, TransactionInstruction } from '@solana/web3.js';
+import { PublicKey, TransactionInstruction } from '@bbachain/web3.js';
 import { PublicKeyFromString } from '@validators/pubkey';
 import { Infer, type } from 'superstruct';
 

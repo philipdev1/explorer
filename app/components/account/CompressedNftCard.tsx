@@ -1,5 +1,5 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { Account } from '@providers/accounts';
-import { PublicKey } from '@solana/web3.js';
 import { createRef, Suspense } from 'react';
 import { ChevronDown, ExternalLink } from 'react-feather';
 import useAsyncEffect from 'use-async-effect';

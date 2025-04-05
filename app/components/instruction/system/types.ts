@@ -5,7 +5,7 @@ import { enums, Infer, number, string, type } from 'superstruct';
 
 export type CreateAccountInfo = Infer<typeof CreateAccountInfo>;
 export const CreateAccountInfo = type({
-    lamports: number(),
+    daltons: number(),
     newAccount: PublicKeyFromString,
     owner: PublicKeyFromString,
     source: PublicKeyFromString,
@@ -20,15 +20,15 @@ export const AssignInfo = type({
 
 export type TransferInfo = Infer<typeof TransferInfo>;
 export const TransferInfo = type({
+    daltons: number(),
     destination: PublicKeyFromString,
-    lamports: number(),
     source: PublicKeyFromString,
 });
 
 export type CreateAccountWithSeedInfo = Infer<typeof CreateAccountWithSeedInfo>;
 export const CreateAccountWithSeedInfo = type({
     base: PublicKeyFromString,
-    lamports: number(),
+    daltons: number(),
     newAccount: PublicKeyFromString,
     owner: PublicKeyFromString,
     seed: string(),
@@ -44,8 +44,8 @@ export const AdvanceNonceInfo = type({
 
 export type WithdrawNonceInfo = Infer<typeof WithdrawNonceInfo>;
 export const WithdrawNonceInfo = type({
+    daltons: number(),
     destination: PublicKeyFromString,
-    lamports: number(),
     nonceAccount: PublicKeyFromString,
     nonceAuthority: PublicKeyFromString,
 });
@@ -88,8 +88,8 @@ export const AssignWithSeedInfo = type({
 
 export type TransferWithSeedInfo = Infer<typeof TransferWithSeedInfo>;
 export const TransferWithSeedInfo = type({
+    daltons: number(),
     destination: PublicKeyFromString,
-    lamports: number(),
     source: PublicKeyFromString,
     sourceBase: PublicKeyFromString,
     sourceOwner: PublicKeyFromString,

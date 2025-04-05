@@ -1,4 +1,4 @@
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection, PublicKey } from '@bbachain/web3.js';
 import { ChainId, Client, Token, UtlConfig } from '@solflare-wallet/utl-sdk';
 
 import { Cluster } from './cluster';
@@ -51,7 +51,7 @@ function makeUtlClient(cluster: Cluster, connectionString: string): Client | und
 
     const config: UtlConfig = new UtlConfig({
         chainId,
-        connection: new Connection(connectionString),
+        connection: new Connection(connectionString) as any,
     });
 
     return new Client(config);

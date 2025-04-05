@@ -1,9 +1,9 @@
+import { PublicKey, TransactionInstruction } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { BorshInstructionCoder, Idl, Program } from '@coral-xyz/anchor';
 import { IdlDefinedFields } from '@coral-xyz/anchor/dist/cjs/idl';
 import { IdlField, IdlInstruction, IdlType, IdlTypeDef } from '@coral-xyz/anchor/dist/cjs/idl';
 import { useAnchorProgram } from '@providers/anchor';
-import { PublicKey, TransactionInstruction } from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
 import { camelToTitleCase, numberWithSeparator, snakeToTitleCase } from '@utils/index';
 import { programLabel } from '@utils/tx';
@@ -15,7 +15,7 @@ const ANCHOR_SELF_CPI_TAG = Buffer.from('1d9acb512ea545e4', 'hex').reverse();
 const ANCHOR_SELF_CPI_NAME = 'Anchor Self Invocation';
 
 export function instructionIsSelfCPI(ixData: Buffer): boolean {
-    return ixData.slice(0, 8).equals(ANCHOR_SELF_CPI_TAG);
+    return ixData.slice(0, 8).equals(ANCHOR_SELF_CPI_TAG as any);
 }
 
 export function getAnchorProgramName(program: Program | null): string | undefined {

@@ -1,3 +1,12 @@
+import {
+    ComputeBudgetProgram,
+    ParsedInnerInstruction,
+    ParsedInstruction,
+    ParsedTransaction,
+    PartiallyDecodedInstruction,
+    SignatureResult,
+    TransactionSignature,
+} from '@bbachain/web3.js';
 import { ErrorCard } from '@components/common/ErrorCard';
 import { LoadingCard } from '@components/common/LoadingCard';
 import { isAddressLookupTableInstruction } from '@components/instruction/address-lookup-table/types';
@@ -27,15 +36,6 @@ import { useAnchorProgram } from '@providers/anchor';
 import { useCluster } from '@providers/cluster';
 import { useTransactionDetails, useTransactionStatus } from '@providers/transactions';
 import { useFetchTransactionDetails } from '@providers/transactions/parsed';
-import {
-    ComputeBudgetProgram,
-    ParsedInnerInstruction,
-    ParsedInstruction,
-    ParsedTransaction,
-    PartiallyDecodedInstruction,
-    SignatureResult,
-    TransactionSignature,
-} from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
 import { INNER_INSTRUCTIONS_START_SLOT, SignatureProps } from '@utils/index';
 import { intoTransactionInstruction } from '@utils/tx';

@@ -1,12 +1,12 @@
 import { LAMPORTS_PER_SOL, lamportsToSol } from '@utils/index';
 
 describe('lamportsToSol', () => {
-    it('0 lamports', () => {
+    it('0 daltons', () => {
         expect(lamportsToSol(0)).toBe(0.0);
         expect(lamportsToSol(BigInt(0))).toBe(0.0);
     });
 
-    it('1 lamport', () => {
+    it('1 dalton', () => {
         expect(lamportsToSol(1)).toBe(0.000000001);
         expect(lamportsToSol(BigInt(1))).toBe(0.000000001);
         expect(lamportsToSol(-1)).toBe(-0.000000001);
@@ -20,7 +20,7 @@ describe('lamportsToSol', () => {
         expect(lamportsToSol(BigInt(-LAMPORTS_PER_SOL))).toBe(-1.0);
     });
 
-    it('u64::MAX lamports', () => {
+    it('u64::MAX daltons', () => {
         expect(lamportsToSol(2n ** 64n)).toBe(18446744073.709553);
         expect(lamportsToSol(-(2n ** 64n))).toBe(-18446744073.709553);
     });

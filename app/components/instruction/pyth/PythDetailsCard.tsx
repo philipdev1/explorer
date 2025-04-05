@@ -1,5 +1,5 @@
+import { SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import { useCluster } from '@providers/cluster';
-import { SignatureResult, TransactionInstruction } from '@solana/web3.js';
 import React from 'react';
 
 import { InstructionCard } from '../InstructionCard';

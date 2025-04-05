@@ -1,3 +1,4 @@
+import { AccountInfo, AccountMeta, Connection, PublicKey, TransactionInstruction } from '@bbachain/web3.js';
 import {
     Config,
     GroupConfig,
@@ -8,7 +9,6 @@ import {
     SpotMarketConfig,
 } from '@blockworks-foundation/mango-client';
 import { Market } from '@project-serum/serum';
-import { AccountInfo, AccountMeta, Connection, PublicKey, TransactionInstruction } from '@solana/web3.js';
 
 // note: mainnet.1 suffices since its a superset of mainnet.0
 const mangoGroups = Config.ids().groups.filter(group => group.name !== 'mainnet.0');
@@ -323,7 +323,7 @@ export async function getSpotMarketFromSpotMarketConfig(
     if (groupConfig === undefined) {
         return;
     }
-    return await Market.load(connection, mangoSpotMarketConfig.publicKey, undefined, groupConfig.serumProgramId);
+    return await Market.load(connection as any, mangoSpotMarketConfig.publicKey, undefined, groupConfig.serumProgramId);
 }
 
 export function getPerpMarketFromInstruction(

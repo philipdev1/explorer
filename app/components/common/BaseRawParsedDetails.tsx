@@ -1,4 +1,4 @@
-import { ParsedInstruction } from '@solana/web3.js';
+import { ParsedInstruction } from '@bbachain/web3.js';
 import React from 'react';
 
 export function BaseRawParsedDetails({ ix, children }: { ix: ParsedInstruction; children?: React.ReactNode }) {

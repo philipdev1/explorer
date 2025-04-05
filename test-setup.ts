@@ -12,7 +12,7 @@ if (!AbortSignal.timeout) {
     };
 }
 
-// Needed for @solana/web3.js to treat Uint8Arrays as Buffers
+// Needed for @bbachain/web3.js to treat Uint8Arrays as Buffers
 // See https://github.com/anza-xyz/solana-pay/issues/106
 const originalHasInstance = Uint8Array[Symbol.hasInstance];
 Object.defineProperty(Uint8Array, Symbol.hasInstance, {

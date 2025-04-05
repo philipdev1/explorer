@@ -1,6 +1,6 @@
+import { ParsedInstruction, SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import { BaseInstructionCard } from '@components/common/BaseInstructionCard';
 import { useFetchRawTransaction, useRawTransactionDetails } from '@providers/transactions/raw';
-import { ParsedInstruction, SignatureResult, TransactionInstruction } from '@solana/web3.js';
 import React, { useCallback, useContext } from 'react';
 
 import { SignatureContext } from './SignatureContext';

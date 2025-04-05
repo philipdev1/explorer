@@ -289,7 +289,7 @@ function SysvarAccountRewardsCard({
 
                 <tr>
                     <td>Validator Point Value</td>
-                    <td className="text-lg-end font-monospace">{validatorPointValueFormatted} lamports</td>
+                    <td className="text-lg-end font-monospace">{validatorPointValueFormatted} daltons</td>
                 </tr>
             </TableCardBody>
         </div>

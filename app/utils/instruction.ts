@@ -1,3 +1,9 @@
+import {
+    ConfirmedSignatureInfo,
+    ParsedInstruction,
+    ParsedTransactionWithMeta,
+    PartiallyDecodedInstruction,
+} from '@bbachain/web3.js';
 import { isSerumInstruction, parseSerumInstructionTitle } from '@components/instruction/serum/types';
 import { IX_TITLES, TokenInstructionType } from '@components/instruction/token/types';
 import {
@@ -6,12 +12,6 @@ import {
 } from '@components/instruction/token-lending/types';
 import { isTokenSwapInstruction, parseTokenSwapInstructionTitle } from '@components/instruction/token-swap/types';
 import { isTokenProgramId } from '@providers/accounts/tokens';
-import {
-    ConfirmedSignatureInfo,
-    ParsedInstruction,
-    ParsedTransactionWithMeta,
-    PartiallyDecodedInstruction,
-} from '@solana/web3.js';
 import { isTokenProgram } from '@utils/programs';
 import { intoTransactionInstruction } from '@utils/tx';
 import { ParsedInfo } from '@validators/index';

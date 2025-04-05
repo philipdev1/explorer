@@ -1,15 +1,15 @@
-import { Address } from '@components/common/Address';
-import { ErrorCard } from '@components/common/ErrorCard';
-import { Signature } from '@components/common/Signature';
-import { SolBalance } from '@components/common/SolBalance';
-import { useCluster } from '@providers/cluster';
 import {
     ConfirmedTransactionMeta,
     PublicKey,
     TransactionSignature,
     VersionedBlockResponse,
     VOTE_PROGRAM_ID,
-} from '@solana/web3.js';
+} from '@bbachain/web3.js';
+import { Address } from '@components/common/Address';
+import { ErrorCard } from '@components/common/ErrorCard';
+import { Signature } from '@components/common/Signature';
+import { SolBalance } from '@components/common/SolBalance';
+import { useCluster } from '@providers/cluster';
 import { parseProgramLogs } from '@utils/program-logs';
 import { displayAddress } from '@utils/tx';
 import { pickClusterParams } from '@utils/url';
@@ -281,7 +281,7 @@ export function BlockHistoryCard({ block }: { block: VersionedBlockResponse }) {
                                         <td>{signature}</td>
 
                                         <td className="text-end">
-                                            {tx.meta !== null ? <SolBalance lamports={tx.meta.fee} /> : 'Unknown'}
+                                            {tx.meta !== null ? <SolBalance daltons={tx.meta.fee} /> : 'Unknown'}
                                         </td>
 
                                         {showComputeUnits && (

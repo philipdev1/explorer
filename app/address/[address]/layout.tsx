@@ -1,10 +1,10 @@
 'use client';
 
+import { PublicKey } from '@bbachain/web3.js';
 import { AddressLookupTableAccountSection } from '@components/account/address-lookup-table/AddressLookupTableAccountSection';
 import { isAddressLookupTableAccount } from '@components/account/address-lookup-table/types';
 import { ConfigAccountSection } from '@components/account/ConfigAccountSection';
 import { FeatureAccountSection } from '@components/account/FeatureAccountSection';
-import { MetaplexNFTHeader } from '@components/account/MetaplexNFTHeader';
 import { isNFTokenAccount, parseNFTokenCollectionAccount } from '@components/account/nftoken/isNFTokenAccount';
 import { NFTOKEN_ADDRESS } from '@components/account/nftoken/nftoken';
 import { NFTokenAccountHeader } from '@components/account/nftoken/NFTokenAccountHeader';
@@ -30,12 +30,10 @@ import {
     useMintAccountInfo,
 } from '@providers/accounts';
 import FLAGGED_ACCOUNTS_WARNING from '@providers/accounts/flagged-accounts';
-import isMetaplexNFT from '@providers/accounts/utils/isMetaplexNFT';
 import { useAnchorProgram } from '@providers/anchor';
 import { CacheEntry, FetchStatus } from '@providers/cache';
 import { useCluster } from '@providers/cluster';
 import { PROGRAM_ID as ACCOUNT_COMPRESSION_ID } from '@solana/spl-account-compression';
-import { PublicKey } from '@solana/web3.js';
 import { Cluster, ClusterStatus } from '@utils/cluster';
 import { FEATURE_PROGRAM_ID } from '@utils/parseFeatureAccount';
 import { useClusterPath } from '@utils/url';
@@ -271,9 +269,9 @@ function AccountHeader({
     const parsedData = account?.data.parsed;
     const isToken = parsedData && isTokenProgramData(parsedData) && parsedData?.parsed.type === 'mint';
 
-    if (isMetaplexNFT(parsedData, mintInfo) && parsedData.nftData) {
-        return <MetaplexNFTHeader nftData={parsedData.nftData} address={address} />;
-    }
+    // if (isMetaplexNFT(parsedData, mintInfo) && parsedData.nftData) {
+    //     return <MetaplexNFTHeader nftData={parsedData.nftData} address={address} />;
+    // }
 
     const nftokenNFT = account && isNFTokenAccount(account);
     if (nftokenNFT && account) {
@@ -306,7 +304,7 @@ function TokenMintHeader({
     address,
     tokenInfo,
     mintInfo,
-    parsedData,
+    // parsedData,
 }: {
     address: string;
     tokenInfo?: FullTokenInfo;
@@ -346,18 +344,18 @@ function TokenMintHeader({
             </>
         );
     }
-    // Fall back to legacy token list when there is stub metadata (blank uri), updatable by default by the mint authority
-    else if (!parsedData?.nftData?.metadata.data.uri && tokenInfo) {
-        return defaultCard;
-    } else if (parsedData?.nftData) {
-        const token = {
-            logoURI: parsedData?.nftData?.json?.image,
-            name: parsedData?.nftData?.json?.name ?? parsedData?.nftData.metadata.data.name,
-        };
-        return <TokenMintHeaderCard token={token} address={address} unverified={!tokenInfo?.verified} />;
-    } else if (tokenInfo) {
-        return defaultCard;
-    }
+    // // Fall back to legacy token list when there is stub metadata (blank uri), updatable by default by the mint authority
+    // else if (!parsedData?.nftData?.metadata.data.uri && tokenInfo) {
+    //     return defaultCard;
+    // } else if (parsedData?.nftData) {
+    //     const token = {
+    //         logoURI: parsedData?.nftData?.json?.image,
+    //         name: parsedData?.nftData?.json?.name ?? parsedData?.nftData.metadata.data.name,
+    //     };
+    //     return <TokenMintHeaderCard token={token} address={address} unverified={!tokenInfo?.verified} />;
+    // } else if (tokenInfo) {
+    //     return defaultCard;
+    // }
     return defaultCard;
 }
 
@@ -458,7 +456,7 @@ function DetailsSections({
 
     if (!info || info.status === FetchStatus.Fetching || isTokenInfoLoading) {
         return <LoadingCard />;
-    } else if (info.status === FetchStatus.FetchFailed || info.data?.lamports === undefined) {
+    } else if (info.status === FetchStatus.FetchFailed || info.data?.daltons === undefined) {
         return <ErrorCard retry={() => fetchAccount(pubkey, 'parsed')} text="Fetch Failed" />;
     }
 
@@ -520,8 +518,8 @@ function InfoSection({ account, tokenInfo }: { account: Account; tokenInfo?: Ful
         parsedData.parsed.type === 'lookupTable'
     ) {
         return <AddressLookupTableAccountSection account={account} lookupTableAccount={parsedData.parsed.info} />;
-    } else if (rawData && isAddressLookupTableAccount(account.owner.toBase58() as Address, rawData)) {
-        return <AddressLookupTableAccountSection account={account} data={rawData} />;
+    } else if (rawData && isAddressLookupTableAccount(account.owner.toBase58() as Address, rawData as any)) {
+        return <AddressLookupTableAccountSection account={account} data={rawData as any} />;
     } else if (featureInfo || account.owner.toBase58() === FEATURE_PROGRAM_ID) {
         return <FeatureAccountSection account={account} />;
     } else {
@@ -611,15 +609,15 @@ function getTabs(pubkey: PublicKey, account: Account): TabComponent[] {
     }
 
     // Add the key for address lookup tables
-    if (account.data.raw && isAddressLookupTableAccount(account.owner.toBase58() as Address, account.data.raw)) {
+    if (account.data.raw && isAddressLookupTableAccount(account.owner.toBase58() as Address, account.data.raw as any)) {
         tabs.push(...TABS_LOOKUP['address-lookup-table']);
     }
 
     // Add the key for Metaplex NFTs
     if (
         parsedData &&
-        (programTypeKey === 'spl-token:mint' || programTypeKey == 'spl-token-2022:mint') &&
-        (parsedData as TokenProgramData).nftData
+        (programTypeKey === 'spl-token:mint' || programTypeKey == 'spl-token-2022:mint')
+        // (parsedData as TokenProgramData).nftData
     ) {
         tabs.push(...TABS_LOOKUP[`${programTypeKey}:metaplexNFT`]);
     }

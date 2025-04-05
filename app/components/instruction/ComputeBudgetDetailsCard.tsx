@@ -1,7 +1,7 @@
+import { SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { SolBalance } from '@components/common/SolBalance';
 import { useCluster } from '@providers/cluster';
-import { SignatureResult, TransactionInstruction } from '@solana/web3.js';
 import {
     ComputeBudgetInstruction,
     identifyComputeBudgetInstruction,
@@ -37,13 +37,13 @@ export function ComputeBudgetDetailsCard({
     const { url } = useCluster();
 
     try {
-        const type = identifyComputeBudgetInstruction(ix);
+        const type = identifyComputeBudgetInstruction(ix as any);
         switch (type) {
             case ComputeBudgetInstruction.RequestUnits: {
                 const idata = { ...ix, programAddress: address(ix.programId.toBase58()) };
                 const {
                     data: { units, additionalFee },
-                } = parseRequestUnitsInstruction(idata);
+                } = parseRequestUnitsInstruction(idata as any);
                 return (
                     <InstructionCardComponent
                         ix={ix}
@@ -70,7 +70,7 @@ export function ComputeBudgetDetailsCard({
                         <tr>
                             <td>Additional Fee (SOL)</td>
                             <td className="text-lg-end">
-                                <SolBalance lamports={additionalFee} />
+                                <SolBalance daltons={additionalFee} />
                             </td>
                         </tr>
                     </InstructionCardComponent>
@@ -79,7 +79,7 @@ export function ComputeBudgetDetailsCard({
             case ComputeBudgetInstruction.RequestHeapFrame: {
                 const {
                     data: { bytes },
-                } = parseRequestHeapFrameInstruction({ ...ix, programAddress: address(ix.programId.toBase58()) });
+                } = parseRequestHeapFrameInstruction({ ...ix as any, programAddress: address(ix.programId.toBase58()) });
                 return (
                     <InstructionCardComponent
                         ix={ix}
@@ -108,7 +108,7 @@ export function ComputeBudgetDetailsCard({
             case ComputeBudgetInstruction.SetComputeUnitLimit: {
                 const {
                     data: { units },
-                } = parseSetComputeUnitLimitInstruction({ ...ix, programAddress: address(ix.programId.toBase58()) });
+                } = parseSetComputeUnitLimitInstruction({ ...ix as any, programAddress: address(ix.programId.toBase58()) });
                 return (
                     <InstructionCardComponent
                         ix={ix}
@@ -138,7 +138,7 @@ export function ComputeBudgetDetailsCard({
                 const {
                     data: { microLamports },
                 } = parseSetComputeUnitPriceInstruction({
-                    ...ix,
+                    ...ix as any,
                     programAddress: address(ix.programId.toBase58()),
                 });
                 return (
@@ -161,7 +161,7 @@ export function ComputeBudgetDetailsCard({
                             <td>Compute Unit Price</td>
                             <td className="text-lg-end font-monospace">{`${microLamportsToLamportsString(
                                 microLamports
-                            )} lamports per compute unit`}</td>
+                            )} daltons per compute unit`}</td>
                         </tr>
                     </InstructionCardComponent>
                 );
@@ -170,7 +170,7 @@ export function ComputeBudgetDetailsCard({
                 const {
                     data: { accountDataSizeLimit },
                 } = parseSetLoadedAccountsDataSizeLimitInstruction({
-                    ...ix,
+                    ...ix as any,
                     programAddress: address(ix.programId.toBase58()),
                 });
                 return (

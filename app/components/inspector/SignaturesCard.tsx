@@ -1,6 +1,6 @@
+import { PublicKey, VersionedMessage } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Signature } from '@components/common/Signature';
-import { PublicKey, VersionedMessage } from '@solana/web3.js';
 import bs58 from 'bs58';
 import React from 'react';
 import * as nacl from 'tweetnacl';
@@ -25,7 +25,7 @@ export function TransactionSignatures({
                 verified = verifySignature({
                     key,
                     message: rawMessage,
-                    signature: rawSignature,
+                    signature: rawSignature as any,
                 });
             }
 

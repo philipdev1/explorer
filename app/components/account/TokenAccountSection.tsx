@@ -1,3 +1,4 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Copyable } from '@components/common/Copyable';
 import { LoadingCard } from '@components/common/LoadingCard';
@@ -6,7 +7,6 @@ import { Account, NFTData, TokenProgramData, useFetchAccountInfo } from '@provid
 import { TOKEN_2022_PROGRAM_ID } from '@providers/accounts/tokens';
 import isMetaplexNFT from '@providers/accounts/utils/isMetaplexNFT';
 import { useCluster } from '@providers/cluster';
-import { PublicKey } from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
 import { CoingeckoStatus, useCoinGecko } from '@utils/coingecko';
 import { displayTimestamp, displayTimestampWithoutDate } from '@utils/date';

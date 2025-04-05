@@ -1,9 +1,9 @@
+import { StakeActivationData } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Epoch } from '@components/common/Epoch';
 import { SolBalance } from '@components/common/SolBalance';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { Account, useFetchAccountInfo } from '@providers/accounts';
-import { StakeActivationData } from '@solana/web3.js';
 import { displayTimestampUtc } from '@utils/date';
 import { StakeAccountInfo, StakeAccountType, StakeMeta } from '@validators/accounts/stake';
 import React from 'react';
@@ -112,13 +112,13 @@ function OverviewCard({
                 <tr>
                     <td>Balance (SOL)</td>
                     <td className="text-lg-end text-uppercase">
-                        <SolBalance lamports={account.lamports} />
+                        <SolBalance daltons={account.daltons} />
                     </td>
                 </tr>
                 <tr>
                     <td>Rent Reserve (SOL)</td>
                     <td className="text-lg-end">
-                        <SolBalance lamports={stakeAccount.meta.rentExemptReserve} />
+                        <SolBalance daltons={stakeAccount.meta.rentExemptReserve} />
                     </td>
                 </tr>
                 {hideDelegation && (
@@ -173,7 +173,7 @@ function DelegationCard({
                         <tr>
                             <td>Delegated Stake (SOL)</td>
                             <td className="text-lg-end">
-                                <SolBalance lamports={stake.delegation.stake} />
+                                <SolBalance daltons={stake.delegation.stake} />
                             </td>
                         </tr>
 
@@ -182,14 +182,14 @@ function DelegationCard({
                                 <tr>
                                     <td>Active Stake (SOL)</td>
                                     <td className="text-lg-end">
-                                        <SolBalance lamports={activation.active} />
+                                        <SolBalance daltons={activation.active} />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>Inactive Stake (SOL)</td>
                                     <td className="text-lg-end">
-                                        <SolBalance lamports={activation.inactive} />
+                                        <SolBalance daltons={activation.inactive} />
                                     </td>
                                 </tr>
                             </>

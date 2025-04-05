@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js';
+import { PublicKey } from '@bbachain/web3.js';
 import { Suspense } from 'react';
 
 import { UpgradeableLoaderAccountData } from '@/app/providers/accounts';

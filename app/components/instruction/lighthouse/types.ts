@@ -1,4 +1,4 @@
-import { TransactionInstruction } from '@solana/web3.js';
+import { TransactionInstruction } from '@bbachain/web3.js';
 
 export const LIGHTHOUSE_ADDRESS = 'L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95';
 

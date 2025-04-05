@@ -1,4 +1,4 @@
-import { TransactionError } from '@solana/web3.js';
+import { TransactionError } from '@bbachain/web3.js';
 
 const instructionErrorMessage: Map<string, string> = new Map([
     ['GenericError', 'generic instruction error'],
@@ -46,7 +46,7 @@ const instructionErrorMessage: Map<string, string> = new Map([
     ['Immutable', 'Account is immutable'],
     ['IncorrectAuthority', 'Incorrect authority provided'],
     ['BorshIoError', 'Failed to serialize or deserialize account data: {0}'],
-    ['AccountNotRentExempt', 'An account does not have enough lamports to be rent-exempt'],
+    ['AccountNotRentExempt', 'An account does not have enough daltons to be rent-exempt'],
     ['InvalidAccountOwner', 'Invalid account owner'],
     ['ArithmeticOverflow', 'Program arithmetic overflowed'],
     ['UnsupportedSysvar', 'Unsupported sysvar'],

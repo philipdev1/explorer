@@ -1,4 +1,4 @@
-import { PublicKey, VersionedMessage } from '@solana/web3.js';
+import { PublicKey, VersionedMessage } from '@bbachain/web3.js';
 import base58 from 'bs58';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -111,7 +111,7 @@ function TabInstructions() {
             content: (
                 <div className="p-3">
                     <div className="mb-3">
-                        <div className="text-decoration-underline mb-2">@solana/web3.js &lt; 2.0.0</div>
+                        <div className="text-decoration-underline mb-2">@bbachain/web3.js &lt; 2.0.0</div>
                         <div className="mb-2">
                             <div className="mb-1">Legacy Transaction:</div>
                             <code>console.log(tx.serializeMessage().toString(&quot;base64&quot;));</code>
@@ -122,7 +122,7 @@ function TabInstructions() {
                         </div>
                     </div>
                     <div>
-                        <div className="text-decoration-underline mb-2">@solana/web3.js &gt;= 2.0.0</div>
+                        <div className="text-decoration-underline mb-2">@bbachain/web3.js &gt;= 2.0.0</div>
                         <div>
                             <div className="mb-1">Legacy Transaction:</div>
                             <code>console.log(getBase64EncodedWireTransaction(tx));</code>

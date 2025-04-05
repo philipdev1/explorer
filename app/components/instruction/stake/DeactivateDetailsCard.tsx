@@ -1,5 +1,5 @@
+import { ParsedInstruction, SignatureResult, StakeProgram } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
-import { ParsedInstruction, SignatureResult, StakeProgram } from '@solana/web3.js';
 import React from 'react';
 
 import { InstructionCard } from '../InstructionCard';

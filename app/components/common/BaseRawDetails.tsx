@@ -1,5 +1,5 @@
+import { MessageCompiledInstruction, TransactionInstruction, VersionedMessage } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
-import { MessageCompiledInstruction, TransactionInstruction, VersionedMessage } from '@solana/web3.js';
 import React from 'react';
 
 import { AddressFromLookupTableWithContext, AddressWithContext } from '../inspector/AddressWithContext';

@@ -1,7 +1,7 @@
 'use client';
 
+import { VersionedMessage } from '@bbachain/web3.js';
 import { useCluster } from '@providers/cluster';
-import { VersionedMessage } from '@solana/web3.js';
 import { Cluster } from '@utils/cluster';
 import bs58 from 'bs58';
 import { useRouter, useSearchParams } from 'next/navigation';

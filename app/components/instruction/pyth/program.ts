@@ -1,6 +1,6 @@
+import { PublicKey, TransactionInstruction } from '@bbachain/web3.js';
 import * as BufferLayout from '@solana/buffer-layout';
 import { Layout, uint8ArrayToBuffer } from '@solana/buffer-layout';
-import { PublicKey, TransactionInstruction } from '@solana/web3.js';
 
 /**
  * An enumeration of valid PythInstructionTypes
@@ -256,7 +256,7 @@ export class PythInstruction {
      * Decode a Pyth instruction and retrieve the instruction type.
      */
     static decodeInstructionType(instruction: TransactionInstruction): PythInstructionType {
-        const header = headerLayout().decode(instruction.data);
+        const header = headerLayout().decode(instruction.data as any);
         if (header.version !== 2) {
             throw new Error(`Unsupported Pyth version: ${header.version}`);
         }

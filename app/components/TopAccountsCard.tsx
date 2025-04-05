@@ -1,10 +1,10 @@
+import { AccountBalancePair } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { ErrorCard } from '@components/common/ErrorCard';
 import { LoadingCard } from '@components/common/LoadingCard';
 import { SolBalance } from '@components/common/SolBalance';
 import { Status, useFetchRichList, useRichList } from '@providers/richList';
 import { useSupply } from '@providers/supply';
-import { AccountBalancePair } from '@solana/web3.js';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import React, { createRef, useMemo } from 'react';
@@ -117,9 +117,9 @@ const renderAccountRow = (account: AccountBalancePair, index: number, supply: bi
                 <Address pubkey={account.address} link />
             </td>
             <td className="text-end">
-                <SolBalance lamports={account.lamports} maximumFractionDigits={0} />
+                <SolBalance daltons={account.daltons} maximumFractionDigits={0} />
             </td>
-            <td className="text-end">{percentage(BigInt(100 * account.lamports), supply, 4).toFixed(3) + '%'}</td>
+            <td className="text-end">{percentage(BigInt(100 * account.daltons), supply, 4).toFixed(3) + '%'}</td>
         </tr>
     );
 };

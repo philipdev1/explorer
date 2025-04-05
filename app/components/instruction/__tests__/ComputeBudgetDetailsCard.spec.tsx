@@ -1,6 +1,6 @@
+import { ComputeBudgetProgram, MessageCompiledInstruction } from '@bbachain/web3.js';
 import { BaseInstructionCard } from '@components/common/BaseInstructionCard';
 import { intoTransactionInstructionFromVersionedMessage } from '@components/inspector/utils';
-import { ComputeBudgetProgram, MessageCompiledInstruction } from '@solana/web3.js';
 import { render, screen } from '@testing-library/react';
 import { useSearchParams } from 'next/navigation';
 import { vi } from 'vitest';
@@ -47,7 +47,7 @@ describe('instruction::ComputeBudgetDetailsCard', () => {
                 </ClusterProvider>
             </ScrollAnchorProvider>
         );
-        expect(screen.getByText(/7.187812 lamports per compute unit/)).toBeInTheDocument();
+        expect(screen.getByText(/7.187812 daltons per compute unit/)).toBeInTheDocument();
     });
 
     test('should render "SetComputeUnitLimit"', async () => {

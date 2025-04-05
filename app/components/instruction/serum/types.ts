@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 
+import { AccountMeta, PublicKey, SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import { decodeInstruction, MARKETS } from '@project-serum/serum';
-import { AccountMeta, PublicKey, SignatureResult, TransactionInstruction } from '@solana/web3.js';
 import { BigIntFromString } from '@validators/number';
 import { create, enums, Infer, number, type } from 'superstruct';
 

@@ -1,4 +1,4 @@
-import { PublicKey, TransactionSignature } from '@solana/web3.js';
+import { PublicKey, TransactionSignature } from '@bbachain/web3.js';
 import { HumanizeDuration, HumanizeDurationLanguage } from 'humanize-duration-ts';
 
 // Switch to web3 constant when web3 updates superstruct
@@ -35,29 +35,29 @@ export function microLamportsToLamports(microLamports: number | bigint): number 
 }
 
 export function microLamportsToLamportsString(microLamports: number | bigint, maximumFractionDigits = 6): string {
-    const lamports = microLamportsToLamports(microLamports);
-    return new Intl.NumberFormat('en-US', { maximumFractionDigits }).format(lamports);
+    const daltons = microLamportsToLamports(microLamports);
+    return new Intl.NumberFormat('en-US', { maximumFractionDigits }).format(daltons);
 }
 
-export function lamportsToSol(lamports: number | bigint): number {
-    if (typeof lamports === 'number') {
-        return lamports / LAMPORTS_PER_SOL;
+export function lamportsToSol(daltons: number | bigint): number {
+    if (typeof daltons === 'number') {
+        return daltons / LAMPORTS_PER_SOL;
     }
 
     let signMultiplier = 1;
-    if (lamports < 0) {
+    if (daltons < 0) {
         signMultiplier = -1;
     }
 
-    const absLamports = lamports < 0 ? -lamports : lamports;
+    const absLamports = daltons < 0 ? -daltons : daltons;
     const lamportsString = absLamports.toString(10).padStart(10, '0');
     const splitIndex = lamportsString.length - 9;
     const solString = lamportsString.slice(0, splitIndex) + '.' + lamportsString.slice(splitIndex);
     return signMultiplier * parseFloat(solString);
 }
 
-export function lamportsToSolString(lamports: number | bigint, maximumFractionDigits = 9): string {
-    const sol = lamportsToSol(lamports);
+export function lamportsToSolString(daltons: number | bigint, maximumFractionDigits = 9): string {
+    const sol = lamportsToSol(daltons);
     return new Intl.NumberFormat('en-US', { maximumFractionDigits }).format(sol);
 }
 

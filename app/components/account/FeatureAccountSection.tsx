@@ -1,8 +1,8 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { Slot } from '@components/common/Slot';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { Account } from '@providers/accounts';
-import { PublicKey } from '@solana/web3.js';
 import { parseFeatureAccount, useFeatureAccount } from '@utils/parseFeatureAccount';
 import Link from 'next/link';
 import { useMemo } from 'react';

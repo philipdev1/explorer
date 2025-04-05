@@ -1,9 +1,9 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { ErrorCard } from '@components/common/ErrorCard';
 import { LoadingCard } from '@components/common/LoadingCard';
 import { Account, useAccountInfo, useFetchAccountInfo } from '@providers/accounts';
 import { FetchStatus } from '@providers/cache';
 import { useCluster } from '@providers/cluster';
-import { PublicKey } from '@solana/web3.js';
 import { ClusterStatus } from '@utils/cluster';
 import { RedirectType } from 'next/dist/client/components/redirect';
 import { redirect } from 'next/navigation';
@@ -41,7 +41,7 @@ export function ParsedAccountRenderer({
         return <LoadingCard />;
     } else if (
         accountInfoCacheEntry.status === FetchStatus.FetchFailed ||
-        accountInfoCacheEntry.data?.lamports === undefined
+        accountInfoCacheEntry.data?.daltons === undefined
     ) {
         return <ErrorCard retry={() => fetchAccount(pubkey, 'parsed')} text="Fetch Failed" />;
     } else {

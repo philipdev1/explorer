@@ -1,7 +1,7 @@
+import { SignatureResult, TransactionInstruction } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { BorshEventCoder, BorshInstructionCoder, Idl, Instruction, Program } from '@coral-xyz/anchor';
 import { IdlEvent, IdlField, IdlInstruction, IdlTypeDefTyStruct } from '@coral-xyz/anchor/dist/cjs/idl';
-import { SignatureResult, TransactionInstruction } from '@solana/web3.js';
 import {
     getAnchorAccountsFromInstruction,
     getAnchorNameForInstruction,

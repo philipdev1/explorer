@@ -1,5 +1,5 @@
+import { Connection, PublicKey } from '@bbachain/web3.js';
 import { sha256 } from '@noble/hashes/sha256';
-import { Connection, PublicKey } from '@solana/web3.js';
 import useSWRImmutable from 'swr/immutable';
 
 import { useAnchorProgram } from '../providers/anchor';

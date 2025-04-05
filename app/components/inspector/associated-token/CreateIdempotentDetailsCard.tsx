@@ -1,7 +1,7 @@
+import { MessageCompiledInstruction, ParsedInstruction, SignatureResult, VersionedMessage } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { AddressTableLookupAddress } from '@components/common/inspector/AddressTableLookupAddress';
 import { InspectorInstructionCard } from '@components/common/InspectorInstructionCard';
-import { MessageCompiledInstruction, ParsedInstruction, SignatureResult, VersionedMessage } from '@solana/web3.js';
 import React from 'react';
 
 export function CreateIdempotentDetailsCard(props: {

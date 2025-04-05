@@ -1,5 +1,6 @@
 'use client';
 
+import { ParsedTransaction, SystemInstruction, SystemProgram, TransactionSignature } from '@bbachain/web3.js';
 import { Address } from '@components/common/Address';
 import { BalanceDelta } from '@components/common/BalanceDelta';
 import { ErrorCard } from '@components/common/ErrorCard';
@@ -22,7 +23,6 @@ import {
     useTransactionStatus,
 } from '@providers/transactions';
 import { useFetchTransactionDetails } from '@providers/transactions/parsed';
-import { ParsedTransaction, SystemInstruction, SystemProgram, TransactionSignature } from '@solana/web3.js';
 import { Cluster, ClusterStatus } from '@utils/cluster';
 import { displayTimestamp } from '@utils/date';
 import { SignatureProps } from '@utils/index';
@@ -323,7 +323,7 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
                     <tr>
                         <td>Fee (SOL)</td>
                         <td className="text-lg-end">
-                            <SolBalance lamports={fee} />
+                            <SolBalance daltons={fee} />
                         </td>
                     </tr>
                 )}
@@ -415,7 +415,7 @@ function AccountsCard({ signature }: SignatureProps) {
                     <BalanceDelta delta={delta} isSol />
                 </td>
                 <td>
-                    <SolBalance lamports={post} />
+                    <SolBalance daltons={post} />
                 </td>
                 <td>
                     {index === 0 && <span className="badge bg-info-soft me-1">Fee Payer</span>}

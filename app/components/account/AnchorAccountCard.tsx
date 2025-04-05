@@ -8,7 +8,7 @@ import { getAnchorProgramName, mapAccountToRows } from '@utils/anchor';
 import React, { useMemo } from 'react';
 
 export function AnchorAccountCard({ account }: { account: Account }) {
-    const { lamports } = account;
+    const { daltons } = account;
     const { url } = useCluster();
     const { program: anchorProgram } = useAnchorProgram(account.owner.toString(), url);
     const rawData = account.data.raw;
@@ -38,7 +38,7 @@ export function AnchorAccountCard({ account }: { account: Account }) {
         };
     }, [anchorProgram, rawData]);
 
-    if (lamports === undefined) return null;
+    if (daltons === undefined) return null;
     if (!anchorProgram) return <ErrorCard text="No Anchor IDL found" />;
     if (!decodedAccountData || !accountDef) {
         return <ErrorCard text="Failed to decode account data according to the public Anchor interface" />;

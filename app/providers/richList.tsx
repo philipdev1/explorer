@@ -1,7 +1,7 @@
 'use client';
 
+import { AccountBalancePair, Connection } from '@bbachain/web3.js';
 import { useCluster } from '@providers/cluster';
-import { AccountBalancePair, Connection } from '@solana/web3.js';
 import { Cluster, ClusterStatus } from '@utils/cluster';
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import { ComputeBudgetProgram, MessageCompiledInstruction, PublicKey } from '@solana/web3.js';
+import { ComputeBudgetProgram, MessageCompiledInstruction, PublicKey } from '@bbachain/web3.js';
 
 import * as stubs from '@/app/__tests__/mock-stubs';
 import * as mock from '@/app/__tests__/mocks';

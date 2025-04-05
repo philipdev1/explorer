@@ -1,8 +1,8 @@
+import { PublicKey } from '@bbachain/web3.js';
 import { AccountAddressRow, AccountBalanceRow, AccountHeader } from '@components/common/Account';
 import { Address } from '@components/common/Address';
 import { TableCardBody } from '@components/common/TableCardBody';
 import { Account, useFetchAccountInfo } from '@providers/accounts';
-import { PublicKey } from '@solana/web3.js';
 import { ConfigAccount, StakeConfigInfoAccount, ValidatorInfoAccount } from '@validators/accounts/config';
 import React from 'react';
 
