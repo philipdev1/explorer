@@ -43,8 +43,8 @@ const ORIGIN = 'http://explorer.solana.com';
 
 function requestFactory(uri?: string) {
     const params = new URLSearchParams({ uri: uri ?? '' });
-    const request = new Request(`${ORIGIN}/api/metadata/devnet?${params.toString()}`);
-    const nextParams = { params: { network: 'devnet' } };
+    const request = new Request(`${ORIGIN}/api/metadata/testnet?${params.toString()}`);
+    const nextParams = { params: { network: 'testnet' } };
 
     return { nextParams, request };
 }

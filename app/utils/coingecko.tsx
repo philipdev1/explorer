@@ -56,7 +56,7 @@ export function useCoinGecko(coinId?: string): CoinGeckoResult | undefined {
         if (!isTabVisible) {
             return;
         }
-        if (cluster !== Cluster.MainnetBeta) {
+        if (cluster !== Cluster.Mainnet) {
             return;
         }
         let interval: NodeJS.Timeout | undefined;

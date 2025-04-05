@@ -6,7 +6,6 @@ import { fetchFeatureGateInformation, getLink } from '../index';
 // Taken from ../../../utils/feature-gate/featureGates.json
 const FEATURE = {
     "description": "Two instructions for moving value between stake accounts without holding Withdrawer",
-    "devnetActivationEpoch": 798,
     "key": "7bTK6Jis8Xpfrs8ZoUfiMDPazTcdPcTWheZFJTA5Z6X4",
     "mainnetActivationEpoch": 727,
     "simd": 148,

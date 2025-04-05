@@ -65,7 +65,7 @@ describe('TransactionInspectorPage with Squads Transaction', () => {
     const specificAccountKey = [
         'squads-proposal',
         'ASwDJP5mzxV1dfov2eQz5WAVEy833nwK17VLcjsrZsZf',
-        'https://api.mainnet-beta.solana.com',
+        'https://api.mainnet.solana.com',
     ];
 
     beforeEach(async () => {

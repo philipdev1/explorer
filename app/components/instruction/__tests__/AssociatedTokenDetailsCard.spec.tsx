@@ -17,7 +17,7 @@ import { AssociatedTokenDetailsCard } from '../associated-token/AssociatedTokenD
 vi.mock('next/navigation');
 // @ts-expect-error does not contain `mockReturnValue`
 useSearchParams.mockReturnValue({
-    get: () => 'mainnet-beta',
+    get: () => 'mainnet',
     has: (_query?: string) => false,
     toString: () => '',
 });

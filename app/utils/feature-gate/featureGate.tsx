@@ -19,11 +19,8 @@ export function UpcomingFeatures() {
     const filteredFeatures = (FEATURES as FeatureInfoType[])
         .filter((feature: FeatureInfoType) => {
             switch (cluster) {
-                case Cluster.MainnetBeta:
-                    // Show features activated on devnet and testnet
-                    return feature.devnetActivationEpoch !== null && feature.testnetActivationEpoch !== null;
-                case Cluster.Devnet:
-                    // Show features activated on testnet, mark if already activated on devnet
+                case Cluster.Mainnet:
+                    // Show features activated on testnet
                     return feature.testnetActivationEpoch !== null;
                 case Cluster.Testnet:
                     // Only show features not yet activated on testnet
@@ -36,10 +33,8 @@ export function UpcomingFeatures() {
             // Helper function to check if a feature is activated on current cluster
             const isActivated = (feature: FeatureInfoType) => {
                 switch (cluster) {
-                    case Cluster.MainnetBeta:
+                    case Cluster.Mainnet:
                         return feature.mainnetActivationEpoch !== null;
-                    case Cluster.Devnet:
-                        return feature.devnetActivationEpoch !== null;
                     case Cluster.Testnet:
                         return feature.testnetActivationEpoch !== null;
                     default:
@@ -79,11 +74,8 @@ export function UpcomingFeatures() {
                                     <p className="card-text flex-grow-1">{feature.description}</p>
 
                                     <div className="ms-n2 mb-2">
-                                        {cluster === Cluster.MainnetBeta && feature.mainnetActivationEpoch && (
+                                        {cluster === Cluster.Mainnet && feature.mainnetActivationEpoch && (
                                             <span className="badge bg-success ms-2">Active on Mainnet</span>
-                                        )}
-                                        {cluster === Cluster.Devnet && feature.devnetActivationEpoch && (
-                                            <span className="badge bg-success ms-2">Active on Devnet</span>
                                         )}
                                         {cluster === Cluster.Testnet && feature.testnetActivationEpoch && (
                                             <span className="badge bg-success ms-2">Active on Testnet</span>
@@ -99,16 +91,6 @@ export function UpcomingFeatures() {
                                                     className="epoch-link"
                                                 >
                                                     Mainnet Epoch {feature.mainnetActivationEpoch}
-                                                </Link>
-                                            </div>
-                                        )}
-                                        {feature.devnetActivationEpoch && (
-                                            <div className="mb-1">
-                                                <Link
-                                                    href={`/epoch/${feature.devnetActivationEpoch}?cluster=devnet`}
-                                                    className="epoch-link"
-                                                >
-                                                    Devnet Epoch {feature.devnetActivationEpoch}
                                                 </Link>
                                             </div>
                                         )}

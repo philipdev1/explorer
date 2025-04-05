@@ -1,7 +1,7 @@
 import { TransactionInstruction } from '@solana/web3.js';
 
 export const PROGRAM_IDS: string[] = [
-    'LendZqTs7gn5CTSJU1jWKhKuVpjJGom45nnwPb2AMTi', // mainnet / testnet / devnet
+    'LendZqTs7gn5CTSJU1jWKhKuVpjJGom45nnwPb2AMTi', // mainnet / testnet
 ];
 
 const INSTRUCTION_LOOKUP: { [key: number]: string } = {

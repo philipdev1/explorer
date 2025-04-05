@@ -23,7 +23,7 @@ export function useSquadsMultisigLookup(programAuthority: PublicKey | null | und
     return useSWRImmutable<SquadsMultisigMapInfo | null>(
         ['squadsReverseMap', programAuthority?.toString(), cluster],
         async ([_prefix, programIdString, cluster]: [string, string | undefined, Cluster]) => {
-            if (cluster !== Cluster.MainnetBeta || !programIdString) {
+            if (cluster !== Cluster.Mainnet || !programIdString) {
                 return null;
             }
             const response = await fetch(`${SQUADS_MAP_URL}/${programIdString}`);
@@ -43,7 +43,7 @@ export function useSquadsMultisig(
     return useSWRImmutable<MinimalMultisigInfo | null>(
         ['squadsMultisig', multisig, cluster],
         async ([_prefix, multisig, cluster]: [string, string | undefined, Cluster]) => {
-            if (cluster !== Cluster.MainnetBeta || !multisig || !version) {
+            if (cluster !== Cluster.Mainnet || !multisig || !version) {
                 return null;
             }
             if (version === 'v4') {

@@ -15,7 +15,7 @@ import { ComputeBudgetDetailsCard } from '../ComputeBudgetDetailsCard';
 vi.mock('next/navigation');
 // @ts-expect-error does not contain `mockReturnValue`
 useSearchParams.mockReturnValue({
-    get: () => 'devnet',
+    get: () => 'testnet',
     has: (_query?: string) => false,
     toString: () => '',
 });

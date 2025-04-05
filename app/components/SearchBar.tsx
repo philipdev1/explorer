@@ -64,7 +64,7 @@ export function SearchBar() {
         }
         const tokenOptionsAppendable = tokenOptions ? [tokenOptions] : [];
         const domainOptions =
-            hasDomainSyntax(search) && cluster === Cluster.MainnetBeta ? (await buildDomainOptions(search)) ?? [] : [];
+            hasDomainSyntax(search) && cluster === Cluster.Mainnet ? (await buildDomainOptions(search)) ?? [] : [];
 
         return [...localOptions, ...tokenOptionsAppendable, ...domainOptions];
     }

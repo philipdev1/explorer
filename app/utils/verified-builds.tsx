@@ -220,7 +220,7 @@ function coalesceCommandFromPda(programId: PublicKey, pdaData: any) {
 }
 
 function isMainnet(currentCluster: Cluster): boolean {
-    return currentCluster == Cluster.MainnetBeta;
+    return currentCluster == Cluster.Mainnet;
 }
 
 // Helper function to hash program data

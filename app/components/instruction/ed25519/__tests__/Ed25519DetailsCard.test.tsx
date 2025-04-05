@@ -42,7 +42,7 @@ describe('Ed25519DetailsCard', () => {
     };
 
     it('renders basic Ed25519 verification instruction with single signature', () => {
-        // 56JcSVYUPr8hdg8q2bfDhiPm5W9XQtr45VEevK9ye6Ec7DcyvD9CvnDgUoQhL3eQEmz32RRtLcaRdU9xyaDyCLiT (devnet)
+        // 56JcSVYUPr8hdg8q2bfDhiPm5W9XQtr45VEevK9ye6Ec7DcyvD9CvnDgUoQhL3eQEmz32RRtLcaRdU9xyaDyCLiT (testnet)
 
         // Example of single signature verification
         const ed25519x = {

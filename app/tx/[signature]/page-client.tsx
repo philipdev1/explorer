@@ -212,7 +212,7 @@ function StatusCard({ signature, autoRefresh }: SignatureProps & AutoRefreshProp
         const err = getTransactionErrorReason(info, transaction);
         errorReason = err.errorReason;
         if (err.errorLink !== undefined) {
-            if (cluster === Cluster.MainnetBeta) {
+            if (cluster === Cluster.Mainnet) {
                 errorLink = err.errorLink;
             } else {
                 errorLink = `${err.errorLink}?cluster=${clusterName.toLowerCase()}${

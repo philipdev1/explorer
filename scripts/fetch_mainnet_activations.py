@@ -38,11 +38,11 @@ def get_epoch_for_slot(epoch_schedule: dict, slot: int) -> int:
 async def main():
     features = get_features()
 
-    connection = AsyncClient('https://api.mainnet-beta.solana.com')
+    connection = AsyncClient('https://api.mainnet.solana.com')
     epoch_schedule = (await connection.get_epoch_schedule()).value
 
     for feature in features:
-        if feature['devnetActivationEpoch'] and feature['testnetActivationEpoch'] and not feature['mainnetActivationEpoch']:
+        if feature['testnetActivationEpoch'] and not feature['mainnetActivationEpoch']:
             print("Fetching feature gate", feature['key'])
             account = await connection.get_account_info(Pubkey.from_string(feature['key']))
 

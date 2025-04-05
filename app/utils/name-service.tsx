@@ -37,7 +37,7 @@ export const useUserDomains = (userAddress: string): [DomainInfo[] | null, boole
     useEffect(() => {
         const resolve = async () => {
             // Allow only mainnet and custom
-            if (![Cluster.MainnetBeta, Cluster.Custom].includes(cluster)) return;
+            if (![Cluster.Mainnet, Cluster.Custom].includes(cluster)) return;
             const connection = new Connection(url, 'confirmed');
             try {
                 setLoading(true);

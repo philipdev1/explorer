@@ -6,7 +6,7 @@ test('stub', () => expect(true).toBeTruthy());
 
 vi.mock("next/navigation", () => {
     const actual = vi.importActual("next/navigation");
-    const cluster = 'mainnet-beta';
+    const cluster = 'mainnet';
     const customUrl = undefined;
 
     return {
@@ -26,7 +26,7 @@ vi.mock("next/navigation", () => {
             },
             toString: () => {
                 let clusterString;
-                if (cluster !== 'mainnet-beta') clusterString = `cluster=${cluster}`;
+                if (cluster !== 'mainnet') clusterString = `cluster=${cluster}`;
                 if (customUrl) {
                     return `customUrl=${customUrl}${clusterString ? `&${clusterString}` : ''}`;
                 }

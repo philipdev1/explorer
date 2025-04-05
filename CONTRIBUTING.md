@@ -28,8 +28,8 @@ Contributing to the Explorer requires `pnpm` version `9.10.0`.
 Once you have this version of `pnpm`, you can continue with the following steps.
 
 -   Copy `.env.example` into `.env` & fill out the fields with custom RPC urls \
-    from a Solana RPC provider. You should not use `https://api.mainnet-beta.solana.com` \
-    or `https://api.devnet.solana.com` or else you will get rate-limited. These are public \
+    from a Solana RPC provider. You should not use `https://api.mainnet.solana.com` \
+    or `https://api.testnet.solana.com` or else you will get rate-limited. These are public \
     endpoints not suitable for application development. You must set these URLs with \
     endpoints from your own provider.
 

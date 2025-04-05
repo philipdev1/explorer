@@ -141,24 +141,17 @@ const BaseFeatureCard = ({
 function ClusterActivationEpochAtCluster({ featureInfo, cluster }: { featureInfo: FeatureInfoType; cluster: Cluster }) {
     if (cluster === Cluster.Custom) return null;
 
-    const { mainnetActivationEpoch, devnetActivationEpoch, testnetActivationEpoch } = featureInfo;
+    const { mainnetActivationEpoch, testnetActivationEpoch } = featureInfo;
 
     // Show empty state unless there is any info about Activation
-    if (!mainnetActivationEpoch && !devnetActivationEpoch && !testnetActivationEpoch) return <code>No Epoch</code>;
+    if (!mainnetActivationEpoch && !testnetActivationEpoch) return <code>No Epoch</code>;
 
     return (
         <>
-            {mainnetActivationEpoch && cluster === Cluster.MainnetBeta && (
+            {mainnetActivationEpoch && cluster === Cluster.Mainnet && (
                 <div>
                     <Link href={`/epoch/${featureInfo.mainnetActivationEpoch}?cluster=mainnet`} className="epoch-link">
                         Mainnet Epoch {featureInfo.mainnetActivationEpoch}
-                    </Link>
-                </div>
-            )}
-            {devnetActivationEpoch && cluster === Cluster.Devnet && (
-                <div>
-                    <Link href={`/epoch/${featureInfo.devnetActivationEpoch}?cluster=devnet`} className="epoch-link">
-                        Devnet Epoch {featureInfo.devnetActivationEpoch}
                     </Link>
                 </div>
             )}
@@ -176,18 +169,15 @@ function ClusterActivationEpochAtCluster({ featureInfo, cluster }: { featureInfo
 function FeatureActivatedAtCluster({ featureInfo, cluster }: { featureInfo: FeatureInfoType; cluster: Cluster }) {
     if (cluster === Cluster.Custom) return null;
 
-    const { mainnetActivationEpoch, devnetActivationEpoch, testnetActivationEpoch } = featureInfo;
+    const { mainnetActivationEpoch, testnetActivationEpoch } = featureInfo;
 
     // Show empty state unless there is any info about Activation
-    if (!mainnetActivationEpoch && !devnetActivationEpoch && !testnetActivationEpoch) return <code>Not activated</code>;
+    if (!mainnetActivationEpoch && !testnetActivationEpoch) return <code>Not activated</code>;
 
     return (
         <>
-            {cluster === Cluster.MainnetBeta && mainnetActivationEpoch && (
+            {cluster === Cluster.Mainnet && mainnetActivationEpoch && (
                 <span className="badge bg-success">Active on Mainnet</span>
-            )}
-            {cluster === Cluster.Devnet && devnetActivationEpoch && (
-                <span className="badge bg-success">Active on Devnet</span>
             )}
             {cluster === Cluster.Testnet && testnetActivationEpoch && (
                 <span className="badge bg-success">Active on Testnet</span>

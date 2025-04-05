@@ -65,7 +65,7 @@ def parse_wiki():
     
     features = []
     
-    # Parse pending mainnet, devnet and testnet tables (indexes 1, 2 and 3 in the markdown)
+    # Parse pending mainnet and testnet tables (indexes 1, 2 and 3 in the markdown)
     for table_index in [1, 2, 3]:
         rows = parse_markdown_tables(tables[table_index])
         
@@ -85,7 +85,6 @@ def parse_wiki():
                     "simd": row['SIMD'],
                     "version": row['Version'],
                     "testnetActivationEpoch": int(row['Testnet']) if row['Testnet'] and row['Testnet'].isdigit() else None,
-                    "devnetActivationEpoch": int(row['Devnet']) if row['Devnet'] and row['Devnet'].isdigit() else None,
                     "mainnetActivationEpoch": None,  # Has to be updated via script
                     "title": row['Description'],
                     "description": None,  # Has to be manually updated
@@ -104,9 +103,8 @@ def parse_wiki():
     features_by_key = {f['key']: f for f in features}
     for i, existing in enumerate(existing_features):
         if existing['key'] in features_by_key:
-            # Only update devnet and testnet epochs
+            # Only update testnet epochs
             new_feature = features_by_key[existing['key']]
-            existing_features[i]['devnetActivationEpoch'] = new_feature['devnetActivationEpoch']
             existing_features[i]['testnetActivationEpoch'] = new_feature['testnetActivationEpoch']
             del features_by_key[existing['key']]
     

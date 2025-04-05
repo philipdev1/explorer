@@ -55,13 +55,11 @@ function parseQuery(searchParams: ReadonlyURLSearchParams | null): Cluster {
     switch (clusterParam) {
         case 'custom':
             return Cluster.Custom;
-        case 'devnet':
-            return Cluster.Devnet;
         case 'testnet':
             return Cluster.Testnet;
-        case 'mainnet-beta':
+        case 'mainnet':
         default:
-            return Cluster.MainnetBeta;
+            return Cluster.Mainnet;
     }
 }
 

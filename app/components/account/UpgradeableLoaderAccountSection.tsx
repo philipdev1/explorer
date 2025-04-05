@@ -146,7 +146,7 @@ export function UpgradeableProgramSection({
                                 <tr>
                                     <td>Upgrade Authority</td>
                                     <td className="text-lg-end">
-                                        {cluster == Cluster.MainnetBeta && squadMapInfo?.isSquad ? (
+                                        {cluster == Cluster.Mainnet && squadMapInfo?.isSquad ? (
                                             <MultisigBadge pubkey={account.pubkey} />
                                         ) : null}
                                         <Address pubkey={programData.authority} alignRight link />
